@@ -1,401 +1,274 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>مولّد البرومبت مع التوقيع - Eng. Mohamed Hammad</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<style>
-body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #0e0e10, #1c1c1e);
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px 10px;
-  margin: 0;
-  transition: background 0.5s;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-body.light-mode {
-  background: linear-gradient(135deg, #f0f0f0, #ffffff);
-  color: #000;
-}
-
-h2 {
-  color: #00aaff;
-  margin-bottom: 15px;
-  text-shadow: 1px 1px 4px #000;
-  text-align: center;
-  width: 100%;
-}
-
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  width: 100%;
-  gap: 10px;
-}
-
-.left-column, .right-column {
-  flex: 1 1 300px;
-  min-width: 300px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.center-column {
-  flex: 2 1 400px;
-  min-width: 400px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-textarea {
-  width: 100%;
-  height: 150px;
-  padding: 15px;
-  border-radius: 12px;
-  border: none;
-  resize: none;
-  font-size: 16px;
-  background-color: #1c1c1e;
-  color: #fff;
-  box-shadow: inset 0 0 10px #000;
-  direction: rtl;
-  text-align: right;
-}
-
-body.light-mode textarea {
-  background-color: #fff;
-  color: #000;
-  box-shadow: inset 0 0 10px #ccc;
-}
-
-button {
-  background-color: #0078ff;
-  color: white;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.3s;
-  margin: 5px 0;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  align-self: center;
-}
-
-button:hover {
-  background-color: #00c0ff;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.4);
-}
-
-#output {
-  width: 100%;
-  margin-top: 10px;
-  padding: 15px;
-  background-color: #1c1c1e;
-  border-radius: 12px;
-  white-space: pre-wrap;
-  font-size: 15px;
-  height: 220px;
-  overflow-y: auto;
-  box-shadow: inset 0 0 10px #000;
-  direction: ltr;
-  text-align: left;
-}
-
-body.light-mode #output {
-  background-color: #fff;
-  color: #000;
-  box-shadow: inset 0 0 10px #ccc;
-}
-
-.options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: flex-start;
-}
-
-label {
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  cursor: pointer;
-  background: #111;
-  padding: 6px 10px;
-  border-radius: 8px;
-  transition: 0.3s;
-  white-space: nowrap;
-}
-
-body.light-mode label {
-  background: #eee;
-  color: #000;
-}
-
-label:hover {
-  background: #222;
-}
-
-body.light-mode label:hover {
-  background: #ddd;
-}
-
-input[type="checkbox"] {
-  width: 16px;
-  height: 16px;
-  cursor: pointer;
-}
-
-.section-title {
-  margin-top: 10px;
-  font-weight: bold;
-  color: #00aaff;
-  font-size: 15px;
-  border-bottom: 1px solid #00aaff;
-  padding-bottom: 4px;
-  margin-bottom: 8px;
-  text-align: right;
-}
-
-select {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 8px;
-  background-color: #1c1c1e;
-  color: #fff;
-  border-radius: 8px;
-  border: none;
-  direction: rtl;
-  text-align: right;
-}
-
-body.light-mode select {
-  background-color: #fff;
-  color: #000;
-}
-
-select[multiple] {
-  height: 100px;
-}
-
-.glass {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  padding: 10px;
-}
-
-.signature-section input, .signature-section select {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 8px;
-  background-color: #1c1c1e;
-  color: #fff;
-  border-radius: 8px;
-  border: none;
-  direction: rtl;
-  text-align: right;
-}
-
-body.light-mode .signature-section input, body.light-mode .signature-section select {
-  background-color: #fff;
-  color: #000;
-}
-
-@media (max-width: 900px) {
-  .container {
-    flex-direction: column;
-  }
-  .left-column, .right-column, .center-column {
-    flex: 1 1 auto;
-  }
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🕋 BananaPrompt AI v2.3 — Islamic Photo Composer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #d4af37;
+      --dark1: #0a1a12;
+      --dark2: #102c1b;
+      --accent: #2b7a50;
+      --accent2: #1d5a3a;
+      --muted: #c9e4d6;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Cairo',sans-serif;
+      background:linear-gradient(135deg,rgba(16,44,27,0.95),rgba(8,20,13,0.95)),
+        url('https://upload.wikimedia.org/wikipedia/commons/0/0a/Kaaba_masjid_al-haram_Makkah.jpg');
+      background-size:cover;
+      background-position:center;
+      background-attachment:fixed;
+      min-height:100vh;
+      color:var(--muted);
+      padding:20px;
+    }
+    h1,h2,h3{color:var(--gold)}
+    .container{max-width:1200px;margin:0 auto}
+    .header{
+      text-align:center;
+      background:rgba(0,0,0,0.55);
+      border:2px solid var(--gold);
+      border-radius:20px;
+      padding:25px;
+      box-shadow:0 10px 35px rgba(0,0,0,0.45);
+      margin-bottom:25px;
+    }
+    .header h1{font-size:28px;margin-bottom:5px;text-shadow:0 2px 8px rgba(0,0,0,0.5)}
+    .header p{color:#e0d8b3}
+    .header .ded{color:#b6d3c4;font-weight:700;margin-top:8px}
+    .audio{margin-top:18px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+    button{
+      cursor:pointer;border:none;font-family:'Cairo',sans-serif;font-weight:700;
+      transition:0.3s;border-radius:8px;
+    }
+    .btn-primary{
+      background:linear-gradient(135deg,#d4af37,#c9a961);
+      color:#0e2417;padding:10px 20px;
+      box-shadow:0 6px 20px rgba(212,175,55,0.3);
+    }
+    .btn-primary:hover{transform:translateY(-2px)}
+    .btn-secondary{
+      background:linear-gradient(135deg,#2b7a50,#1d5a3a);
+      color:var(--gold);border:2px solid var(--gold);
+      padding:10px 20px;box-shadow:0 6px 20px rgba(43,122,80,0.3);
+    }
+    .btn-secondary:hover{transform:translateY(-2px)}
+    .upload{
+      text-align:center;background:rgba(0,0,0,0.55);
+      border:2px dashed var(--gold);border-radius:15px;
+      padding:30px;margin:30px 0;box-shadow:0 10px 35px rgba(0,0,0,0.45);
+    }
+    .upload h2{margin-bottom:15px}
+    .upload input{display:none}
+    .upload label{
+      display:inline-block;background:linear-gradient(135deg,#d4af37,#c9a961);
+      color:#0a1a12;padding:14px 28px;border-radius:10px;font-weight:700;cursor:pointer;
+      box-shadow:0 5px 20px rgba(212,175,55,0.3);
+    }
+    .grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:15px;
+    }
+    .card{
+      background:rgba(16,44,27,0.75);
+      border:2px solid rgba(212,175,55,0.35);
+      border-radius:15px;padding:12px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.4);position:relative;
+    }
+    .idx{
+      position:absolute;top:10px;right:10px;
+      background:linear-gradient(135deg,#d4af37,#c9a961);
+      color:#102c1b;font-weight:800;width:40px;height:40px;
+      border-radius:50%;display:flex;align-items:center;justify-content:center;
+      border:2px solid #fff;box-shadow:0 6px 20px rgba(212,175,55,0.3);
+    }
+    .card img{
+      width:100%;height:260px;object-fit:cover;
+      border-radius:10px;margin-bottom:8px;border:2px solid rgba(212,175,55,0.3);
+    }
+    .form-group{margin-top:10px}
+    .form-group label{color:var(--gold);font-weight:700;font-size:14px}
+    .radio-group{display:flex;gap:10px;margin-top:5px}
+    .radio-group label{color:var(--muted);font-weight:500;font-size:14px;cursor:pointer}
+    input[type=number]{width:100%;padding:10px;border:2px solid rgba(212,175,55,0.35);
+      border-radius:8px;background:rgba(20,60,40,0.5);color:var(--muted)}
+    .merge-section{
+      margin-top:35px;background:rgba(0,0,0,0.55);
+      border:2px solid var(--gold);border-radius:18px;
+      padding:20px;box-shadow:0 10px 30px rgba(0,0,0,0.45);
+    }
+    .merge-section h3{text-align:center;margin-bottom:15px}
+    canvas{
+      max-width:100%;display:block;margin:auto;
+      border-radius:12px;border:2px solid rgba(212,175,55,0.3);
+    }
+    .merge-actions{margin-top:15px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+    pre{
+      background:rgba(20,60,40,0.6);
+      border:2px solid rgba(212,175,55,0.3);
+      color:var(--gold);padding:15px;border-radius:12px;
+      font-size:13px;font-family:monospace;white-space:pre-wrap;word-wrap:break-word;
+    }
+    .footer{
+      margin-top:50px;text-align:center;color:var(--gold);
+      background:linear-gradient(135deg,rgba(0,0,0,0.8),rgba(0,0,0,0.7)),
+        url('https://upload.wikimedia.org/wikipedia/commons/7/79/Prophet%27s_Mosque_Madinah.jpg');
+      background-size:cover;background-position:center;
+      padding:25px;border-top:3px solid var(--gold);
+      border-radius:15px;box-shadow:0 10px 25px rgba(0,0,0,0.5);
+    }
+    .toast{
+      position:fixed;bottom:25px;right:25px;
+      background:linear-gradient(135deg,#2b7a50,#1d5a3a);
+      color:var(--gold);padding:14px 20px;border:2px solid var(--gold);
+      border-radius:10px;box-shadow:0 8px 25px rgba(0,0,0,0.5);
+      opacity:0;transition:.3s;
+    }
+    .toast.show{opacity:1}
+  </style>
 </head>
 <body>
-
-<h2>مولّد البرومبت مع توقيع احترافي ✨</h2>
-
-<div class="container">
-  <!-- العمود الأيسر: خيارات عامة ونوع الشخصية -->
-  <div class="left-column glass">
-    <div class="character-section">
-      <label class="section-title">نوع الشخصية 👤</label>
-      <select id="characterType">
-        <option value="">اختر النوع</option>
-        <option value="male">ذكر 👨</option>
-        <option value="female">أنثى 👩</option>
-        <option value="couples">كابلز 👫</option>
-        <option value="boy child">طفل 👦</option>
-        <option value="girl child">طفلة 👧</option>
-      </select>
-    </div>
-
-    <div class="style-section">
-      <label class="section-title">النمط الفني 🎨</label>
-      <select id="artStyle">
-        <option value="">اختر نمط فني</option>
-        <option value="in the style of cinematic photography, 8k ultra HD">🎬 سينمائي</option>
-        <option value="digital art by Greg Rutkowski">🎨 روتكوفسكي</option>
-        <option value="hyper realistic, photorealistic">📸 واقعي فائق</option>
-      </select>
-    </div>
-
-    <div class="quality-section">
-      <label class="section-title">الجودة ⭐</label>
-      <select id="quality">
-        <option value="">اختر الجودة</option>
-        <option value="8k ultra HD, highly detailed">8K ⭐⭐⭐⭐⭐</option>
-        <option value="4k ultra HD">4K ⭐⭐⭐⭐</option>
-        <option value="highly detailed">HD ⭐⭐⭐</option>
-      </select>
-    </div>
-
-    <div class="signature-section">
-      <label class="section-title">📝 توقيع مخصص</label>
-      <input type="color" id="signatureColor" value="#FFD700">
-      <select id="signatureFont">
-        <option value="stylish cursive">خط فني</option>
-        <option value="modern clean">خط عصري</option>
-      </select>
-    </div>
-  </div>
-
-  <!-- العمود الأوسط: إدخال البرومبت والناتج -->
-  <div class="center-column glass">
-    <textarea id="promptInput" placeholder="اكتب البرومبت هنا..."></textarea>
-    <textarea id="negativePrompt" placeholder="الأشياء الممنوعة (Negative Prompt)..."></textarea>
-    <button onclick="generatePrompt()">إنشاء</button>
-    <button id="copyBtn" onclick="copyPrompt()">نسخ البرومبت</button>
-    <div id="output"></div>
-  </div>
-
-  <!-- العمود الأيمن: خواص الكاميرا والخيارات الإضافية -->
-  <div class="right-column glass">
-    <div class="camera-section">
-      <label class="section-title">خواص الكاميرا 📸</label>
-      <select id="cameraProps" multiple>
-        <option value="Use wide angle lens for expansive view.">زاوية واسعة</option>
-        <option value="Close-up shot focusing on details.">زوم كلوز أب</option>
-        <option value="Aerial view from drone.">منظر جوي من درون</option>
-        <option value="Low angle shot to emphasize power.">زاوية منخفضة</option>
-        <option value="High angle shot for vulnerability.">زاوية عالية</option>
-        <option value="Dutch tilt for dramatic tension.">إمالة هولندية</option>
-        <option value="Overhead drone shot from directly above for a bird's eye view.">تصوير درون من الأعلى مباشرة (منظر عين الطائر)</option>
-        <option value="Side profile shot with dramatic side lighting.">تصوير جانبي مع إضاءة جانبية درامية</option>
-        <option value="Backlit silhouette against sunset.">صورة ظلية مضيئة من الخلف أمام غروب الشمس</option>
-        <option value="Macro lens close-up on eyes or details.">زوم ماكرو على العيون أو التفاصيل</option>
-        <option value="Panoramic wide shot capturing landscape.">لقطة بانورامية واسعة للمناظر الطبيعية</option>
-        <option value="Fish-eye lens for distorted creative effect.">عدسة عين السمكة لتأثير مشوه إبداعي</option>
-        <option value="Tracking shot following the subject in motion.">لقطة تتبع الحركة</option>
-        <option value="Slow-motion cinematic capture.">تصوير سينمائي بطيء الحركة</option>
-        <option value="Underwater angle shot.">زاوية تحت الماء</option>
-        <option value="Mirror reflection shot.">لقطة انعكاس في المرآة</option>
-      </select>
-    </div>
-
-    <div class="options-section">
-      <label class="section-title">خيارات إضافية</label>
-      <div class="options">
-        <label><input type="checkbox" value="Do not add a beard or mustache."> 🧔 لا تضف لحية أو شارب</label>
-        <label><input type="checkbox" value="Change clothes to modest dresses and a hijab that covers all of the hair, leaving no part of it visible."> 🧕 تغيير الملابس إلى فساتين محتشمة وحجاب يغطي الشعر بالكامل</label>
-        <label><input type="checkbox" value="Change places, make the place different, choose a suitable and beautiful place."> 🌆 تغيير المكان، اختيار مكان مناسب وجميل</label>
-        <label><input type="checkbox" value="Zoom the camera angle so the character's face appears completely and clearly."> 🎥 تكبير زاوية الكاميرا لعرض الوجه بالكامل بوضوح</label>
-        <label><input type="checkbox" value="Zoom in on the person's face clearly and closely."> 🔍 زوم إن على وجه الشخص</label>
-        <label><input type="checkbox" value="Zoom in to show half of the person and face in the frame."> 🧍 زوم إن نصف الشخص ووجهه</label>
-        <label><input type="checkbox" value="Show the full person with background in the scene."> 🌄 الشخص كامل مع الخلفية</label>
-        <label><input type="checkbox" value="Enhance lighting to be professional and dramatic."> 💡 تحسين الإضاءة</label>
-        <label><input type="checkbox" value="Add background details consistent with the scene without changing original elements."> 🖼 تحسين الخلفية</label>
-        <label><input type="checkbox" value="Add a simple scarf only, no full hijab."> 🧣 طرحة فقط</label>
-        <label><input type="checkbox" value="Add hijab only, covering hair completely."> 🧕 حجاب فقط</label>
-        <label><input type="checkbox" value="Change shoes to modern sneakers."> 👟 تغيير الحذاء إلى سنيكرز</label>
-        <label><input type="checkbox" value="Change shoes to formal boots."> 👢 تغيير الحذاء إلى بوت</label>
-        <label><input type="checkbox" value="Change male clothes to formal suit."> 👔 تغيير ملابس الرجل إلى بدلة</label>
-        <label><input type="checkbox" value="Change male clothes to casual t-shirt and jeans."> 👕 تغيير ملابس الرجل إلى تيشرت عادي</label>
-        <label><input type="checkbox" value="Remove any text like #67663, xander v caearions, or any unwanted watermarks, logos, or overlays from the image."> 🚫 إزالة النصوص غير المرغوبة مثل #67663 أو xander v caearions</label>
+  <div class="container">
+    <div class="header">
+      <h1>✦ من برمجة المهندس محمد حمّاد ✦</h1>
+      <p>صدقة جارية على أخته المرحومة <strong>جيهان نصر</strong></p>
+      <p class="ded">نسألكم الدعاء لها بالرحمة والمغفرة ودخول الفردوس الأعلى ❤️</p>
+      <div class="audio">
+        <audio id="quranAudio">
+          <source src="https://cdn.quranco.com/recitations/ar-ar/AR_ALAFASY/055_ar_alafasy_64kb.mp3" type="audio/mpeg">
+        </audio>
+        <button class="btn-primary" onclick="playQuran()">▶️ تشغيل سورة الرحمن</button>
+        <button class="btn-secondary" onclick="pauseQuran()">⏸️ إيقاف</button>
       </div>
     </div>
+
+    <div class="upload">
+      <h2>📸 اختر صورك لإعداد البرومبت</h2>
+      <input id="photoInput" type="file" accept="image/*" multiple>
+      <label for="photoInput">اختر الصور</label>
+    </div>
+
+    <div id="previewGrid" class="grid"></div>
+
+    <div class="merge-section" id="mergeSection" style="display:none">
+      <h3>🕋 الصورة المدمجة (تُحدث تلقائيًا)</h3>
+      <canvas id="mergedCanvas"></canvas>
+      <div class="merge-actions">
+        <button class="btn-primary" onclick="downloadMerged()">⬇️ تحميل الصورة المدمجة</button>
+        <button class="btn-secondary" onclick="copyPrompt()">📋 نسخ البرومبت (التعليمات)</button>
+      </div>
+    </div>
+
+    <div class="footer">
+      🕌 تم التصميم والبرمجة بعناية | بإهداء إلى روح المرحومة <strong>جيهان نصر</strong><br>
+      © Eng. Mohamed Hammad | BananaPrompt AI v2.3
+    </div>
   </div>
-</div>
 
-<script>
-function generatePrompt() {
-  const promptEl = document.getElementById('promptInput');
-  const negativeEl = document.getElementById('negativePrompt');
-  const prompt = promptEl.value.trim();
-  const negative = negativeEl.value.trim();
-  const checkboxes = document.querySelectorAll('.options input[type="checkbox"]:checked');
-  let selected = '';
+  <div id="toast" class="toast"></div>
 
-  checkboxes.forEach(cb => {
-    selected += '\n' + cb.value + ' 🚨 You must fully adhere to this option and ignore any conflicting text.';
-  });
+  <script>
+    const toast=(t)=>{const n=document.getElementById('toast');n.textContent=t;n.classList.add('show');setTimeout(()=>n.classList.remove('show'),2000)};
+    const audio=document.getElementById('quranAudio');
+    function playQuran(){audio.play().catch(()=>toast('تحتاج لتفاعل يدوي'));}
+    function pauseQuran(){audio.pause();toast('تم الإيقاف ⏸️');}
 
-  const characterTypeEl = document.getElementById('characterType');
-  if (characterTypeEl.value) {
-    selected += '\nThe main character is a ' + characterTypeEl.value + '. 🚨 You must fully adhere to this and ignore any conflicting text.';
-  }
+    const photoInput=document.getElementById('photoInput');
+    const previewGrid=document.getElementById('previewGrid');
+    const mergeSection=document.getElementById('mergeSection');
+    const mergedCanvas=document.getElementById('mergedCanvas');
+    let uploaded=[];
 
-  const cameraPropsEl = document.getElementById('cameraProps');
-  const cameraSelected = Array.from(cameraPropsEl.selectedOptions).map(opt => opt.value + ' 🚨 You must fully adhere to this and ignore any conflicting text.');
-  if (cameraSelected.length > 0) {
-    selected += '\n' + cameraSelected.join('\n');
-  }
+    photoInput.addEventListener('change',e=>{
+      uploaded=[];
+      const files=Array.from(e.target.files);
+      files.forEach((file,i)=>{
+        const reader=new FileReader();
+        reader.onload=(ev)=>{
+          const img=new Image();
+          img.onload=()=>{
+            uploaded.push({src:ev.target.result,img,gender:'Male',age:25});
+            renderGrid();
+          };
+          img.src=ev.target.result;
+        };
+        reader.readAsDataURL(file);
+      });
+    });
 
-  const artStyle = document.getElementById('artStyle').value;
-  if (artStyle) {
-    selected += '\n' + artStyle + ' 🚨 You must fully adhere to this and ignore any conflicting text.';
-  }
+    function renderGrid(){
+      previewGrid.innerHTML='';
+      uploaded.forEach((p,i)=>{
+        const card=document.createElement('div');
+        card.className='card';
+        card.innerHTML=`
+          <div class="idx">${i+1}</div>
+          <img src="${p.src}" alt="photo ${i+1}">
+          <div class="form-group">
+            <label>النوع:</label>
+            <div class="radio-group">
+              <label><input type="radio" name="g${i}" value="Male" ${p.gender==='Male'?'checked':''}> ذكر</label>
+              <label><input type="radio" name="g${i}" value="Female" ${p.gender==='Female'?'checked':''}> أنثى</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>العمر:</label>
+            <input type="number" min="1" max="120" value="${p.age}">
+          </div>
+        `;
+        card.querySelectorAll('input[type=radio]').forEach(r=>r.addEventListener('change',ev=>{p.gender=ev.target.value;updateMerged();}));
+        card.querySelector('input[type=number]').addEventListener('change',ev=>{p.age=parseInt(ev.target.value)||25;});
+        previewGrid.appendChild(card);
+      });
+      if(uploaded.length>0){mergeSection.style.display='block';mergeImages();}
+      else mergeSection.style.display='none';
+    }
 
-  const quality = document.getElementById('quality').value;
-  if (quality) {
-    selected += '\n' + quality + ' 🚨 You must fully adhere to this and ignore any conflicting text.';
-  }
+    function mergeImages(){
+      const ctx=mergedCanvas.getContext('2d');
+      const h=400, ratio=3/4, w=h*ratio;
+      const pad=25;
+      const totalW=pad+uploaded.length*(w+pad);
+      const totalH=h+pad*2+25;
+      mergedCanvas.width=totalW;
+      mergedCanvas.height=totalH;
+      const grad=ctx.createLinearGradient(0,0,totalW,totalH);
+      grad.addColorStop(0,'#1a472a');grad.addColorStop(1,'#0d2817');
+      ctx.fillStyle=grad;ctx.fillRect(0,0,totalW,totalH);
+      ctx.strokeStyle='#d4af37';ctx.lineWidth=3;roundRect(ctx,5,5,totalW-10,totalH-10,12);ctx.stroke();
 
-  let negativeText = '';
-  if (negative) {
-    negativeText = '\nNegative prompt: ' + negative + '. 🚨 You must fully adhere to this and ignore any conflicting text.';
-  }
-
-  // التوقيع المخصص: Eng بخط يد تمتد فوق Mohamed وHammad معاً
-  const sigColor = document.getElementById('signatureColor').value;
-  const sigFont = document.getElementById('signatureFont').value;
-  const signature = 'Add a small elegant signature at the bottom-right corner: "Eng" in handwritten font extending over "Mohamed Hammad" below it, in ' + sigFont + ' font for the names, color ' + sigColor + ', minimal size, not covering the image. 🚨 You must fully adhere to this and ignore any conflicting text.';
-
-  const finalPrompt = 'Use the attached images to match the face perfectly 100.999% without changing the features:\n' + prompt + selected + negativeText + '\n\n' + signature;
-
-  document.getElementById('output').textContent = finalPrompt;
-}
-
-function copyPrompt() {
-  const output = document.getElementById('output').textContent;
-  if (!output) return;
-  
-  navigator.clipboard.writeText(output).then(() => {
-    const btn = document.getElementById('copyBtn');
-    btn.style.backgroundColor = '#28a745';
-    btn.textContent = 'تم النسخ ✅';
-    setTimeout(() => {
-      btn.style.backgroundColor = '#0078ff';
-      btn.textContent = 'نسخ البرومبت';
-    }, 2000);
-  });
-}
-</script>
-
+      uploaded.forEach((p,i)=>{
+        const img=p.img;
+        const srcRatio=img.width/img.height;
+        const targetRatio=ratio;
+        let sx,sy,sw,sh;
+        if(srcRatio>targetRatio){sh=img.height;sw=sh*targetRatio;sx=(img.width-sw)/2;sy=0;}
+        else{sw=img.width;sh=sw/targetRatio;sx=0;sy=(img.height-sh)/2;}
+        const x=pad+i*(w+pad), y=pad+10;
+        ctx.fillStyle='rgba(52,115,73,0.5)';
+        roundRect(ctx,x-6,y-6,w+12,h+12,12);ctx.fill();
+        ctx.save();
+        ctx.shadowColor='rgba(0,0,0,0.3)';ctx.shadowBlur=12;
+        ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h);
+        ctx.restore();
+        const bx=x+w/2, by=y-15, r=18;
+        ctx.fillStyle='#d4af37';ctx.beginPath();ctx.arc(bx,by,r,0,Math.PI*2);ctx.fill();
+        ctx.strokeStyle='#fff';ctx.lineWidth=2;ctx.beginPath();ctx.arc(bx,by,r,0,Math.PI*2);ctx.stroke();
+        ctx.fillStyle='#fff';ctx.font='bold 18px Cairo';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(i+1,bx,by);
+      });
+    }
+    function roundRect(ctx,x,y,w,h,r){const rr=Math.min(r,w/2,h/2);ctx.beginPath();ctx.moveTo(x+rr,y);ctx.arcTo(x+w,y,x+w,y+h,rr);ctx.arcTo(x+w,y+h,x,y+h,rr);ctx.arcTo(x,y+h,x,y,rr);ctx.arcTo(x,y,x+w,y,rr);ctx.closePath();}
+    function updateMerged(){if(uploaded.length>0)mergeImages();}
+    function downloadMerged(){const a=document.createElement('a');a.href=mergedCanvas.toDataURL('image/png');a.download='merged.png';a.click();toast('✅ تم تحميل الصورة المدمجة');}
+    function copyPrompt(){
+      let text=`CRITICAL INSTRUCTIONS (by Eng. Mohamed Hammad):\n\nUse only the faces from uploaded images — ignore backgrounds and borders.\nMaintain 100.999% facial identity accuracy.\n\nSubject Information:\n`;
+      uploaded.forEach((p,i)=>{text+=`Photo ${i+1}: ${p.gender}, approximately ${p.age} years old.\n`;});
+      text+=`\nAll subjects to stand side by side before the Holy Kaaba.\nMales wear white ihram, females white abaya and hijab.\nLighting: Natural daylight. Camera: Eye-level, realistic style.\nPose: Each holding a Quran, calm spiritual expressions.\nOutput: One seamless professional image, no visible edits.`;
+      navigator.clipboard.writeText(text).then(()=>toast('📋 تم نسخ البرومبت بنجاح'));
+    }
+  </script>
 </body>
 </html>
