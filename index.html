@@ -354,6 +354,36 @@
     .toast.show {
       opacity: 1;
     }
+    
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.6;
+        transform: scale(1.1);
+      }
+    }
+    
+    .fb-link {
+      color: #00a4ef;
+      text-decoration: none;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: 600;
+    }
+    
+    .fb-link:hover {
+      text-decoration: underline;
+      text-shadow: 0 0 15px rgba(0, 164, 239, 0.8);
+    }
+    
+    .pulse-icon {
+      display: inline-block;
+      animation: pulse 1.5s ease-in-out infinite;
+      margin-right: 5px;
+    }
     #previewGrid {
       display: none;
     }
@@ -579,7 +609,7 @@
 
     <div class="footer">
       🕌 تم التصميم والبرمجة بعناية | بإهداء إلى روح المرحومة <strong>جيهان نصر</strong><br>
-      © Eng. Mohamed Hammad | صدقة جارية على روح جيهان نصر
+      © Eng. Mohamed Hammad | <span class="pulse-icon">👍</span><a href="https://www.facebook.com/en.mohamed.nasr" target="_blank" class="fb-link">تابعوا المهندس محمد حماد على الفيسبوك</a>
     </div>
   </div>
 
