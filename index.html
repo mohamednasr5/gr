@@ -14,114 +14,410 @@
       --accent2: #1d5a3a;
       --muted: #c9e4d6;
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{
-      font-family:'Cairo',sans-serif;
-      background:linear-gradient(135deg,rgba(16,44,27,0.95),rgba(8,20,13,0.95)),
-        url('https://github.com/mohamednasr5/gr/blob/7154046be16e83c9f5002d43e245b6d4fca26844/pngtree-islamic-pilgrimage-to-mecca-eid-adha-mubarak-realistic-kaaba-image_16742354.jpg');
-      background-size:cover;
-      background-position:center;
-      background-attachment:fixed;
-      min-height:100vh;
-      color:var(--muted);
-      padding:20px;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    h1,h2,h3{color:var(--gold)}
-    .container{max-width:1200px;margin:0 auto}
-    .header{
-      text-align:center;
-      background:rgba(0,0,0,0.55);
-      border:2px solid var(--gold);
-      border-radius:20px;
-      padding:25px;
-      box-shadow:0 10px 35px rgba(0,0,0,0.45);
-      margin-bottom:25px;
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(135deg, rgba(16, 44, 27, 0.95), rgba(8, 20, 13, 0.95));
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      min-height: 100vh;
+      color: var(--muted);
+      padding: 20px;
     }
-    .header h1{font-size:28px;margin-bottom:5px;text-shadow:0 2px 8px rgba(0,0,0,0.5)}
-    .header p{color:#e0d8b3}
-    .header .ded{color:#b6d3c4;font-weight:700;margin-top:8px}
-    .audio{margin-top:18px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
-    button{
-      cursor:pointer;border:none;font-family:'Cairo',sans-serif;font-weight:700;
-      transition:0.3s;border-radius:8px;
+    h1, h2, h3 {
+      color: var(--gold);
     }
-    .btn-primary{
-      background:linear-gradient(135deg,#d4af37,#c9a961);
-      color:#0e2417;padding:10px 20px;
-      box-shadow:0 6px 20px rgba(212,175,55,0.3);
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
     }
-    .btn-primary:hover{transform:translateY(-2px)}
-    .btn-secondary{
-      background:linear-gradient(135deg,#2b7a50,#1d5a3a);
-      color:var(--gold);border:2px solid var(--gold);
-      padding:10px 20px;box-shadow:0 6px 20px rgba(43,122,80,0.3);
+    .header {
+      text-align: center;
+      background: rgba(0, 0, 0, 0.55);
+      border: 2px solid var(--gold);
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.45);
+      margin-bottom: 25px;
     }
-    .btn-secondary:hover{transform:translateY(-2px)}
-    .upload{
-      text-align:center;background:rgba(0,0,0,0.55);
-      border:2px dashed var(--gold);border-radius:15px;
-      padding:30px;margin:30px 0;box-shadow:0 10px 35px rgba(0,0,0,0.45);
+    .header h1 {
+      font-size: 28px;
+      margin-bottom: 5px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     }
-    .upload h2{margin-bottom:15px}
-    .upload input{display:none}
-    .upload label{
-      display:inline-block;background:linear-gradient(135deg,#d4af37,#c9a961);
-      color:#0a1a12;padding:14px 28px;border-radius:10px;font-weight:700;cursor:pointer;
-      box-shadow:0 5px 20px rgba(212,175,55,0.3);
+    .header p {
+      color: #e0d8b3;
     }
-    .grid{
-      display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:15px;
+    .header .ded {
+      color: #b6d3c4;
+      font-weight: 700;
+      margin-top: 8px;
     }
-    .card{
-      background:rgba(16,44,27,0.75);
-      border:2px solid rgba(212,175,55,0.35);
-      border-radius:15px;padding:12px;
-      box-shadow:0 8px 20px rgba(0,0,0,0.4);position:relative;
+    .audio {
+      margin-top: 18px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
     }
-    .idx{
-      position:absolute;top:10px;right:10px;
-      background:linear-gradient(135deg,#d4af37,#c9a961);
-      color:#102c1b;font-weight:800;width:40px;height:40px;
-      border-radius:50%;display:flex;align-items:center;justify-content:center;
-      border:2px solid #fff;box-shadow:0 6px 20px rgba(212,175,55,0.3);
+    button {
+      cursor: pointer;
+      border: none;
+      font-family: 'Cairo', sans-serif;
+      font-weight: 700;
+      transition: 0.3s;
+      border-radius: 8px;
+      padding: 10px 20px;
     }
-    .card img{
-      width:100%;height:260px;object-fit:cover;
-      border-radius:10px;margin-bottom:8px;border:2px solid rgba(212,175,55,0.3);
+    .btn-primary {
+      background: linear-gradient(135deg, #d4af37, #c9a961);
+      color: #0e2417;
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
     }
-    .form-group{margin-top:10px}
-    .form-group label{color:var(--gold);font-weight:700;font-size:14px}
-    .radio-group{display:flex;gap:10px;margin-top:5px}
-    .radio-group label{color:var(--muted);font-weight:500;font-size:14px;cursor:pointer}
-    input[type=number]{width:100%;padding:10px;border:2px solid rgba(212,175,55,0.35);
-      border-radius:8px;background:rgba(20,60,40,0.5);color:var(--muted)}
-    .merge-section{
-      margin-top:35px;background:rgba(0,0,0,0.55);
-      border:2px solid var(--gold);border-radius:18px;
-      padding:20px;box-shadow:0 10px 30px rgba(0,0,0,0.45);
+    .btn-primary:hover {
+      transform: translateY(-2px);
     }
-    .merge-section h3{text-align:center;margin-bottom:15px}
-    canvas{
-      max-width:100%;display:block;margin:auto;
-      border-radius:12px;border:2px solid rgba(212,175,55,0.3);
+    .btn-secondary {
+      background: linear-gradient(135deg, #2b7a50, #1d5a3a);
+      color: var(--gold);
+      border: 2px solid var(--gold);
+      box-shadow: 0 6px 20px rgba(43, 122, 80, 0.3);
     }
-    .merge-actions{margin-top:15px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
-    .footer{
-      margin-top:50px;text-align:center;color:var(--gold);
-      background:linear-gradient(135deg,rgba(0,0,0,0.8),rgba(0,0,0,0.7)),
-        url('https://github.com/mohamednasr5/gr/blob/7154046be16e83c9f5002d43e245b6d4fca26844/pngtree-islamic-pilgrimage-to-mecca-eid-adha-mubarak-realistic-kaaba-image_16742354.jpg');
-      background-size:cover;background-position:center;
-      padding:25px;border-top:3px solid var(--gold);
-      border-radius:15px;box-shadow:0 10px 25px rgba(0,0,0,0.5);
+    .btn-secondary:hover {
+      transform: translateY(-2px);
     }
-    .toast{
-      position:fixed;bottom:25px;right:25px;
-      background:linear-gradient(135deg,#2b7a50,#1d5a3a);
-      color:var(--gold);padding:14px 20px;border:2px solid var(--gold);
-      border-radius:10px;box-shadow:0 8px 25px rgba(0,0,0,0.5);
-      opacity:0;transition:.3s;
+    .location-selector {
+      text-align: center;
+      background: rgba(0, 0, 0, 0.55);
+      border: 2px solid var(--gold);
+      border-radius: 15px;
+      padding: 25px;
+      margin: 25px 0;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.45);
     }
-    .toast.show{opacity:1}
+    .location-selector h2 {
+      margin-bottom: 20px;
+    }
+    .location-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .location-btn {
+      padding: 15px;
+      background: rgba(20, 60, 40, 0.6);
+      border: 2px solid rgba(212, 175, 55, 0.35);
+      border-radius: 12px;
+      color: var(--muted);
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 14px;
+    }
+    .location-btn:hover {
+      background: rgba(43, 122, 80, 0.6);
+      border-color: var(--gold);
+      transform: translateY(-3px);
+    }
+    .location-btn.active {
+      background: linear-gradient(135deg, #d4af37, #c9a961);
+      color: #0a1a12;
+      border-color: var(--gold);
+      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+    }
+    .upload {
+      text-align: center;
+      background: rgba(0, 0, 0, 0.55);
+      border: 2px dashed var(--gold);
+      border-radius: 15px;
+      padding: 30px;
+      margin: 30px 0;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.45);
+      display: none;
+    }
+    .upload.active {
+      display: block;
+    }
+    .upload h2 {
+      margin-bottom: 15px;
+    }
+    .upload input {
+      display: none;
+    }
+    .upload label {
+      display: inline-block;
+      background: linear-gradient(135deg, #d4af37, #c9a961);
+      color: #0a1a12;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 15px;
+    }
+    .card {
+      background: rgba(16, 44, 27, 0.75);
+      border: 2px solid rgba(212, 175, 55, 0.35);
+      border-radius: 15px;
+      padding: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      position: relative;
+    }
+    .idx {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: linear-gradient(135deg, #d4af37, #c9a961);
+      color: #102c1b;
+      font-weight: 800;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #fff;
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+    }
+    .card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      border: 2px solid rgba(212, 175, 55, 0.3);
+    }
+    .form-group {
+      margin-top: 10px;
+    }
+    .form-group label {
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .radio-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 5px;
+    }
+    .radio-group label {
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    input[type=number] {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid rgba(212, 175, 55, 0.35);
+      border-radius: 8px;
+      background: rgba(20, 60, 40, 0.5);
+      color: var(--muted);
+    }
+    .merge-section {
+      margin-top: 35px;
+      background: rgba(0, 0, 0, 0.55);
+      border: 2px solid var(--gold);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+      display: none;
+    }
+    .merge-section.active {
+      display: block;
+    }
+    .merge-section h3 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .location-info {
+      text-align: center;
+      background: rgba(43, 122, 80, 0.3);
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 15px;
+      color: var(--gold);
+      font-weight: 600;
+    }
+    canvas {
+      max-width: 100%;
+      display: block;
+      margin: auto;
+      border-radius: 12px;
+      border: 2px solid rgba(212, 175, 55, 0.3);
+    }
+    .merge-actions {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .footer {
+      margin-top: 50px;
+      text-align: center;
+      color: var(--gold);
+      background: rgba(0, 0, 0, 0.7);
+      padding: 25px;
+      border-top: 3px solid var(--gold);
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    }
+    .toast {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: linear-gradient(135deg, #2b7a50, #1d5a3a);
+      color: var(--gold);
+      padding: 14px 20px;
+      border: 2px solid var(--gold);
+      border-radius: 10px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transition: 0.3s;
+      z-index: 1000;
+    }
+    .toast.show {
+      opacity: 1;
+    }
+    #previewGrid {
+      display: none;
+    }
+    #previewGrid.active {
+      display: grid;
+    }
+    
+    @media(max-width: 768px) {
+      .header {
+        padding: 15px;
+      }
+      .header h1 {
+        font-size: 20px;
+      }
+      .header p {
+        font-size: 14px;
+      }
+      .location-grid {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        gap: 8px;
+      }
+      .location-btn {
+        padding: 10px;
+        font-size: 12px;
+      }
+      .location-selector {
+        padding: 15px;
+        margin: 15px 0;
+      }
+      .location-selector h2 {
+        font-size: 18px;
+      }
+      .upload {
+        padding: 20px;
+      }
+      .upload h2 {
+        font-size: 18px;
+      }
+      .upload label {
+        padding: 12px 24px;
+        font-size: 14px;
+      }
+      .grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 12px;
+      }
+      .merge-section {
+        padding: 15px;
+      }
+      .merge-section h3 {
+        font-size: 18px;
+      }
+      .footer {
+        font-size: 14px;
+        padding: 15px;
+      }
+    }
+    
+    @media(max-width: 480px) {
+      body {
+        padding: 12px;
+      }
+      .location-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+      .location-btn {
+        padding: 8px;
+        font-size: 11px;
+      }
+      .location-selector {
+        padding: 12px;
+        margin: 12px 0;
+      }
+      .location-selector h2 {
+        font-size: 16px;
+      }
+      .upload {
+        padding: 15px;
+      }
+      .upload h2 {
+        font-size: 16px;
+      }
+      .upload label {
+        padding: 10px 20px;
+        font-size: 13px;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .card {
+        padding: 10px;
+      }
+      .form-group label {
+        font-size: 12px;
+      }
+      .radio-group label {
+        font-size: 12px;
+      }
+      .merge-section {
+        padding: 12px;
+      }
+      .merge-section h3 {
+        font-size: 16px;
+      }
+      .merge-actions {
+        flex-direction: column;
+      }
+      .merge-actions button {
+        width: 100%;
+      }
+      .footer {
+        font-size: 12px;
+        padding: 12px;
+      }
+      .toast {
+        bottom: 15px;
+        right: 15px;
+        padding: 12px 16px;
+        font-size: 13px;
+      }
+      button {
+        padding: 8px 14px;
+        font-size: 13px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -139,74 +435,156 @@
       </div>
     </div>
 
-    <div class="upload">
+    <div class="location-selector">
+      <h2>📍 اختر السيناريو الذي تريده</h2>
+      <div class="location-grid">
+        <button class="location-btn" onclick="selectLocation('kaaba')">🕋 الكعبة</button>
+        <button class="location-btn" onclick="selectLocation('madinah')">🕌 المسجد النبوي</button>
+        <button class="location-btn" onclick="selectLocation('dome')">⛪ قبة الصخرة</button>
+        <button class="location-btn" onclick="selectLocation('pyramids')">🔺 الأهرامات</button>
+        <button class="location-btn" onclick="selectLocation('souq')">🏪 سوق شعبي</button>
+        <button class="location-btn" onclick="selectLocation('coffee')">☕ قهوة شعبية</button>
+        <button class="location-btn" onclick="selectLocation('metro')">🚇 مترو الأنفاق</button>
+        <button class="location-btn" onclick="selectLocation('airport')">✈️ مطار</button>
+        <button class="location-btn" onclick="selectLocation('cafe')">🍰 كافيه راقي</button>
+        <button class="location-btn" onclick="selectLocation('beach')">🏖️ الشاطيء</button>
+        <button class="location-btn" onclick="selectLocation('bus')">🚌 الباص</button>
+        <button class="location-btn" onclick="selectLocation('dinner')">🍽️ سفرة الغذاء</button>
+        <button class="location-btn" onclick="selectLocation('tv')">📺 يشاهدون التلفاز</button>
+        <button class="location-btn" onclick="selectLocation('romantic')">💕 رومانسي</button>
+        <button class="location-btn" onclick="selectLocation('kiss')">💋 تقبيل</button>
+      </div>
+    </div>
+
+    <div class="upload" id="uploadSection">
       <h2>📸 اختر صورك لإعداد البرومبت</h2>
       <input id="photoInput" type="file" accept="image/*" multiple>
-      <label for="photoInput">اختر الصور</label>
+      <label for="photoInput">اختر الصور (حتى 15 صورة)</label>
     </div>
 
     <div id="previewGrid" class="grid"></div>
 
-    <div class="merge-section" id="mergeSection" style="display:none">
-      <h3>🕋 الصورة المدمجة (تُحدث تلقائيًا)</h3>
+    <div class="merge-section" id="mergeSection">
+      <div class="location-info" id="locationInfo"></div>
+      <h3>🖼️ الصورة المدمجة</h3>
       <canvas id="mergedCanvas"></canvas>
       <div class="merge-actions">
-        <button class="btn-primary" onclick="downloadMerged()">⬇️ تحميل الصورة المدمجة</button>
-        <button class="btn-secondary" onclick="copyPrompt()">📋 نسخ البرومبت (التعليمات)</button>
+        <button class="btn-primary" onclick="downloadMerged()">⬇️ تحميل الصورة</button>
+        <button class="btn-secondary" onclick="copyPrompt()">📋 نسخ التعليمات</button>
       </div>
     </div>
 
     <div class="footer">
       🕌 تم التصميم والبرمجة بعناية | بإهداء إلى روح المرحومة <strong>جيهان نصر</strong><br>
-      © Eng. Mohamed Hammad |صدقة جارية على روح جيهان نصر
+      © Eng. Mohamed Hammad | صدقة جارية على روح جيهان نصر
     </div>
   </div>
 
   <div id="toast" class="toast"></div>
 
   <script>
-    const toast=(t)=>{const n=document.getElementById('toast');n.textContent=t;n.classList.add('show');setTimeout(()=>n.classList.remove('show'),2000)};
-    const audio=document.getElementById('quranAudio');
-    audio.volume=0.3;
-    function playQuran(){audio.play().catch(()=>toast('🎧 تحتاج لتفاعل يدوي لتشغيل الصوت'));}
-    function pauseQuran(){audio.pause();toast('⏸️ تم إيقاف الدعاء');}
+    const locationSettings = {
+      kaaba: { nameAr: 'الكعبة المشرفة', maleClothes: 'White ihram (white wrapper and white upper garment)', femaleClothes: 'White abaya and white hijab', background: 'Holy Kaaba in Mecca', description: 'Standing in front of the Holy Kaaba', emotion: 'spiritual reverence' },
+      madinah: { nameAr: 'المسجد النبوي الشريف', maleClothes: 'White ihram (white wrapper and white upper garment)', femaleClothes: 'White abaya and white hijab', background: 'Prophet Muhammad Mosque in Medina', description: 'Standing in front of the Prophet Muhammad Mosque', emotion: 'spiritual reverence' },
+      dome: { nameAr: 'قبة الصخرة المشرفة', maleClothes: 'casual clothing, Palestinian keffiyeh around neck, raising victory sign', femaleClothes: 'colorful festive dress, Palestinian keffiyeh around neck, holding Palestinian flag', background: 'Dome of the Rock in Jerusalem', description: 'Standing in front of the Dome of the Rock', emotion: 'proud and defiant' },
+      pyramids: { nameAr: 'الأهرامات', maleClothes: 'Ancient Egyptian clothing (pharaonic style)', femaleClothes: 'Ancient Egyptian clothing (pharaonic style)', background: 'Great Pyramids of Giza', description: 'Standing in front of the Great Pyramids', emotion: 'majestic and historical' },
+      souq: { nameAr: 'سوق شعبي مصري', maleClothes: 'Traditional Egyptian galabaya or casual Egyptian street wear', femaleClothes: 'Traditional Egyptian dress or casual Egyptian street wear with hijab', background: 'Traditional Egyptian bazaar with colorful shops and merchandise', description: 'Standing in a busy Egyptian souk surrounded by traditional vendors', emotion: 'lively and authentic' },
+      coffee: { nameAr: 'قهوة شعبية', maleClothes: 'Traditional Egyptian casual wear, sitting relaxed', femaleClothes: 'Traditional Egyptian casual wear or galabaya style with hijab, sitting relaxed', background: 'Traditional Egyptian coffee shop with aged walls and traditional decor', description: 'Sitting together in a traditional Egyptian coffee shop', emotion: 'casual and comfortable' },
+      metro: { nameAr: 'مترو الأنفاق المصري', maleClothes: 'Modern casual urban Egyptian clothing, standing in metro', femaleClothes: 'Modern casual urban Egyptian clothing with hijab, standing in metro', background: 'Inside Cairo Metro station with underground tunnels and metro car interior', description: 'Standing inside an Egyptian metro train', emotion: 'urban and contemporary' },
+      airport: { nameAr: 'مطار القاهرة', maleClothes: 'Smart casual travel outfit, modern and fashionable', femaleClothes: 'Smart casual travel outfit with hijab, modern and fashionable', background: 'Cairo Airport terminal with modern architecture and departure boards', description: 'Standing at Cairo Airport terminal with travel luggage', emotion: 'adventurous and excited' },
+      cafe: { nameAr: 'كافيه راقي', maleClothes: 'Elegant casual wear, stylish and refined', femaleClothes: 'Elegant modern dress with hijab, stylish and refined', background: 'Upscale modern cafe with sophisticated interior design', description: 'Sitting at a trendy upscale cafe enjoying beverages', emotion: 'sophisticated and relaxed' },
+      beach: { nameAr: 'الشاطيء', maleClothes: 'Beach casual wear, summer shirt and shorts', femaleClothes: 'Beach appropriate wear with Islamic modesty, beach hijab', background: 'Beautiful sandy beach with Mediterranean or Red Sea views and sunset', description: 'Standing together on a beautiful sandy beach', emotion: 'peaceful and joyful' },
+      bus: { nameAr: 'الباص بجوار بعضهما', maleClothes: 'Casual everyday Egyptian wear, sitting close together', femaleClothes: 'Casual everyday Egyptian wear with hijab, sitting close together', background: 'Inside a crowded Cairo bus with passengers and seats', description: 'Sitting next to each other on a crowded Egyptian bus', emotion: 'intimate and natural' },
+      dinner: { nameAr: 'سفرة الغذاء', maleClothes: 'Semi-formal or casual home wear, sitting at table', femaleClothes: 'Semi-formal or casual home wear with hijab, sitting at table', background: 'Traditional Egyptian dining setup with various Egyptian dishes on the table', description: 'Sitting together at a traditional Egyptian dining table', emotion: 'warm and family-oriented' },
+      tv: { nameAr: 'يشاهدون التلفاز', maleClothes: 'Comfortable home casual wear, sitting relaxed', femaleClothes: 'Comfortable home casual wear with hijab, sitting relaxed', background: 'Modern Egyptian home interior with television and comfortable seating', description: 'Sitting together comfortably watching television at home', emotion: 'cozy and intimate' },
+      romantic: { nameAr: 'رومانسي', maleClothes: 'Casual comfortable clothing', femaleClothes: 'Vibrant festive dress or colorful elegant outfit', background: 'Beautiful romantic setting with soft lighting', description: 'Standing together embracing each other, both looking directly at the camera', emotion: 'romantic and intimate', pose: 'embracing and hugging each other' },
+      kiss: { nameAr: 'تقبيل', maleClothes: 'Casual comfortable clothing', femaleClothes: 'Vibrant festive dress or colorful elegant outfit', background: 'Beautiful romantic setting with soft lighting', description: 'Man gently kissing woman on the head, woman looking at camera with warm smile', emotion: 'tender and loving', pose: 'man kissing woman head' }
+    };
 
-    const photoInput=document.getElementById('photoInput');
-    const previewGrid=document.getElementById('previewGrid');
-    const mergeSection=document.getElementById('mergeSection');
-    const mergedCanvas=document.getElementById('mergedCanvas');
-    let uploaded=[];
+    let currentLocation = '';
+    let uploaded = [];
+    
+    const toast = (t) => {
+      const n = document.getElementById('toast');
+      n.textContent = t;
+      n.classList.add('show');
+      setTimeout(() => n.classList.remove('show'), 2000);
+    };
+    
+    const audio = document.getElementById('quranAudio');
+    audio.volume = 0.3;
 
-    photoInput.addEventListener('change',e=>{
-      uploaded=[];
-      const files=Array.from(e.target.files);
-      files.forEach((file,i)=>{
-        const reader=new FileReader();
-        reader.onload=(ev)=>{
-          const img=new Image();
-          img.onload=()=>{
-            uploaded.push({src:ev.target.result,img,gender:'Male',age:25});
+    function selectLocation(loc) {
+      currentLocation = loc;
+      const buttons = document.querySelectorAll('.location-btn');
+      buttons.forEach(b => b.classList.remove('active'));
+      event.target.closest('.location-btn').classList.add('active');
+      document.getElementById('uploadSection').classList.add('active');
+      document.getElementById('previewGrid').classList.remove('active');
+      document.getElementById('mergeSection').classList.remove('active');
+      uploaded = [];
+      toast(`تم اختيار: ${locationSettings[loc].nameAr}`);
+    }
+
+    function playQuran() {
+      audio.play().catch(() => toast('🎧 تحتاج لتفاعل يدوي لتشغيل الصوت'));
+    }
+    
+    function pauseQuran() {
+      audio.pause();
+      toast('⏸️ تم إيقاف الدعاء');
+    }
+
+    const photoInput = document.getElementById('photoInput');
+    const previewGrid = document.getElementById('previewGrid');
+    const mergeSection = document.getElementById('mergeSection');
+    const mergedCanvas = document.getElementById('mergedCanvas');
+
+    photoInput.addEventListener('change', e => {
+      if (!currentLocation) {
+        toast('⚠️ اختر السيناريو أولاً');
+        return;
+      }
+      uploaded = [];
+      const files = Array.from(e.target.files);
+      if (files.length > 15) {
+        toast('⚠️ الحد الأقصى 15 صورة');
+        return;
+      }
+      files.forEach((file, i) => {
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          const img = new Image();
+          img.onload = () => {
+            uploaded.push({ src: ev.target.result, img, gender: 'Male', age: 25, hijab: 'none' });
             renderGrid();
           };
-          img.src=ev.target.result;
+          img.src = ev.target.result;
         };
         reader.readAsDataURL(file);
       });
     });
 
-    function renderGrid(){
-      previewGrid.innerHTML='';
-      uploaded.forEach((p,i)=>{
-        const card=document.createElement('div');
-        card.className='card';
-        card.innerHTML=`
-          <div class="idx">${i+1}</div>
-          <img src="${p.src}" alt="photo ${i+1}">
+    function renderGrid() {
+      previewGrid.innerHTML = '';
+      uploaded.forEach((p, i) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <div class="idx">${i + 1}</div>
+          <img src="${p.src}" alt="photo ${i + 1}">
           <div class="form-group">
             <label>النوع:</label>
             <div class="radio-group">
-              <label><input type="radio" name="g${i}" value="Male" ${p.gender==='Male'?'checked':''}> ذكر</label>
-              <label><input type="radio" name="g${i}" value="Female" ${p.gender==='Female'?'checked':''}> أنثى</label>
+              <label><input type="radio" name="g${i}" value="Male" ${p.gender === 'Male' ? 'checked' : ''}> ذكر</label>
+              <label><input type="radio" name="g${i}" value="Female" ${p.gender === 'Female' ? 'checked' : ''}> أنثى</label>
+            </div>
+          </div>
+          <div class="form-group" id="hijabGroup${i}" style="display:${p.gender === 'Female' ? 'block' : 'none'}">
+            <label>الحجاب:</label>
+            <div class="radio-group">
+              <label><input type="radio" name="h${i}" value="hijab" ${p.hijab === 'hijab' ? 'checked' : ''}> محجبة</label>
+              <label><input type="radio" name="h${i}" value="noHijab" ${p.hijab === 'noHijab' ? 'checked' : ''}> غير محجبة</label>
             </div>
           </div>
           <div class="form-group">
@@ -214,59 +592,156 @@
             <input type="number" min="1" max="120" value="${p.age}">
           </div>
         `;
-        card.querySelectorAll('input[type=radio]').forEach(r=>r.addEventListener('change',ev=>{p.gender=ev.target.value;updateMerged();}));
-        card.querySelector('input[type=number]').addEventListener('change',ev=>{p.age=parseInt(ev.target.value)||25;});
+        const genderRadios = card.querySelectorAll(`input[name="g${i}"]`);
+        genderRadios.forEach(r => r.addEventListener('change', ev => {
+          p.gender = ev.target.value;
+          document.getElementById(`hijabGroup${i}`).style.display = ev.target.value === 'Female' ? 'block' : 'none';
+          if (ev.target.value === 'Male') p.hijab = 'none';
+          updateMerged();
+        }));
+        const hijabRadios = card.querySelectorAll(`input[name="h${i}"]`);
+        hijabRadios.forEach(r => r.addEventListener('change', ev => { p.hijab = ev.target.value; updateMerged(); }));
+        card.querySelector('input[type=number]').addEventListener('change', ev => { p.age = parseInt(ev.target.value) || 25; });
         previewGrid.appendChild(card);
       });
-      if(uploaded.length>0){mergeSection.style.display='block';mergeImages();}
-      else mergeSection.style.display='none';
+      if (uploaded.length > 0) {
+        previewGrid.classList.add('active');
+        mergeSection.classList.add('active');
+        const info = locationSettings[currentLocation];
+        document.getElementById('locationInfo').textContent = `📍 ${info.nameAr}`;
+        mergeImages();
+      }
     }
 
-    function mergeImages(){
-      const ctx=mergedCanvas.getContext('2d');
-      const h=400, ratio=3/4, w=h*ratio;
-      const pad=25;
-      const totalW=pad+uploaded.length*(w+pad);
-      const totalH=h+pad*2+25;
-      mergedCanvas.width=totalW;
-      mergedCanvas.height=totalH;
-      const grad=ctx.createLinearGradient(0,0,totalW,totalH);
-      grad.addColorStop(0,'#1a472a');grad.addColorStop(1,'#0d2817');
-      ctx.fillStyle=grad;ctx.fillRect(0,0,totalW,totalH);
-      ctx.strokeStyle='#d4af37';ctx.lineWidth=3;roundRect(ctx,5,5,totalW-10,totalH-10,12);ctx.stroke();
+    function mergeImages() {
+      const ctx = mergedCanvas.getContext('2d');
+      const h = 400, ratio = 3 / 4, w = h * ratio;
+      const pad = 25;
+      const totalW = pad + uploaded.length * (w + pad);
+      const totalH = h + pad * 2 + 25;
+      mergedCanvas.width = totalW;
+      mergedCanvas.height = totalH;
+      
+      const grad = ctx.createLinearGradient(0, 0, totalW, totalH);
+      grad.addColorStop(0, '#1a472a');
+      grad.addColorStop(1, '#0d2817');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, totalW, totalH);
+      ctx.strokeStyle = '#d4af37';
+      ctx.lineWidth = 3;
+      roundRect(ctx, 5, 5, totalW - 10, totalH - 10, 12);
+      ctx.stroke();
 
-      uploaded.forEach((p,i)=>{
-        const img=p.img;
-        const srcRatio=img.width/img.height;
-        const targetRatio=ratio;
-        let sx,sy,sw,sh;
-        if(srcRatio>targetRatio){sh=img.height;sw=sh*targetRatio;sx=(img.width-sw)/2;sy=0;}
-        else{sw=img.width;sh=sw/targetRatio;sx=0;sy=(img.height-sh)/2;}
-        const x=pad+i*(w+pad), y=pad+10;
-        ctx.fillStyle='rgba(52,115,73,0.5)';
-        roundRect(ctx,x-6,y-6,w+12,h+12,12);ctx.fill();
+      uploaded.forEach((p, i) => {
+        const img = p.img;
+        const srcRatio = img.width / img.height;
+        const targetRatio = ratio;
+        let sx, sy, sw, sh;
+        if (srcRatio > targetRatio) {
+          sh = img.height;
+          sw = sh * targetRatio;
+          sx = (img.width - sw) / 2;
+          sy = 0;
+        } else {
+          sw = img.width;
+          sh = sw / targetRatio;
+          sx = 0;
+          sy = (img.height - sh) / 2;
+        }
+        const x = pad + i * (w + pad), y = pad + 10;
+        ctx.fillStyle = 'rgba(52,115,73,0.5)';
+        roundRect(ctx, x - 6, y - 6, w + 12, h + 12, 12);
+        ctx.fill();
         ctx.save();
-        ctx.shadowColor='rgba(0,0,0,0.3)';ctx.shadowBlur=12;
-        ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h);
+        ctx.shadowColor = 'rgba(0,0,0,0.3)';
+        ctx.shadowBlur = 12;
+        ctx.drawImage(img, sx, sy, sw, sh, x, y, w, h);
         ctx.restore();
-        const bx=x+w/2, by=y-15, r=18;
-        ctx.fillStyle='#d4af37';ctx.beginPath();ctx.arc(bx,by,r,0,Math.PI*2);ctx.fill();
-        ctx.strokeStyle='#fff';ctx.lineWidth=2;ctx.beginPath();ctx.arc(bx,by,r,0,Math.PI*2);ctx.stroke();
-        ctx.fillStyle='#fff';ctx.font='bold 18px Cairo';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(i+1,bx,by);
+        const bx = x + w / 2, by = y - 15, r = 18;
+        ctx.fillStyle = '#d4af37';
+        ctx.beginPath();
+        ctx.arc(bx, by, r, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(bx, by, r, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.fillStyle = '#fff';
+        ctx.font = 'bold 18px Cairo';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(i + 1, bx, by);
       });
     }
 
-    function roundRect(ctx,x,y,w,h,r){const rr=Math.min(r,w/2,h/2);ctx.beginPath();ctx.moveTo(x+rr,y);ctx.arcTo(x+w,y,x+w,y+h,rr);ctx.arcTo(x+w,y+h,x,y+h,rr);ctx.arcTo(x,y+h,x,y,rr);ctx.arcTo(x,y,x+w,y,rr);ctx.closePath();}
-    function updateMerged(){if(uploaded.length>0)mergeImages();}
-    function downloadMerged(){const a=document.createElement('a');a.href=mergedCanvas.toDataURL('image/png');a.download='merged.png';a.click();toast('✅ تم تحميل الصورة المدمجة');}
-    function copyPrompt(){
-      let text=`CRITICAL INSTRUCTIONS (by Eng. Mohamed Hammad):\n\nUse only the faces from uploaded images — ignore backgrounds and borders.\nMaintain 100.999% facial identity accuracy.\n\nSubject Information:\n`;
-      uploaded.forEach((p,i)=>{text+=`Photo ${i+1}: ${p.gender}, approximately ${p.age} years old.\n`;});
-      text+=`\nAll subjects to stand side by side before the Holy Kaaba.\nMales wear white ihram, females white abaya and hijab.\nLighting: Natural daylight. Camera: Eye-level, realistic style.\nPose: Each holding a Quran, calm spiritual expressions.\nOutput: One seamless professional image, no visible edits.`;
-      navigator.clipboard.writeText(text).then(()=>toast('📋 تم نسخ البرومبت بنجاح'));
+    function roundRect(ctx, x, y, w, h, r) {
+      const rr = Math.min(r, w / 2, h / 2);
+      ctx.beginPath();
+      ctx.moveTo(x + rr, y);
+      ctx.arcTo(x + w, y, x + w, y + h, rr);
+      ctx.arcTo(x + w, y + h, x, y + h, rr);
+      ctx.arcTo(x, y + h, x, y, rr);
+      ctx.arcTo(x, y, x + w, y, rr);
+      ctx.closePath();
+    }
+
+    function updateMerged() {
+      if (uploaded.length > 0) mergeImages();
+    }
+
+    function downloadMerged() {
+      const a = document.createElement('a');
+      a.href = mergedCanvas.toDataURL('image/png');
+      a.download = 'merged.png';
+      a.click();
+      toast('✅ تم تحميل الصورة');
+    }
+    
+    function copyPrompt() {
+      const info = locationSettings[currentLocation];
+      let text = `CRITICAL INSTRUCTIONS (by Eng. Mohamed Hammad):\n\n`;
+      text += `Use only the faces from uploaded images — ignore backgrounds and borders.\n`;
+      text += `Maintain 100.999% facial identity accuracy.\n\n`;
+      text += `SCENARIO: ${info.description}\n`;
+      text += `LOCATION: ${info.background}\n`;
+      text += `EMOTION: ${info.emotion}\n\n`;
+      text += `SUBJECT DETAILS:\n`;
+      uploaded.forEach((p, i) => {
+        let clothes = p.gender === 'Male' ? info.maleClothes : info.femaleClothes;
+        
+        if (p.gender === 'Female' && p.age > 50 && p.hijab === 'hijab' && currentLocation !== 'kaaba' && currentLocation !== 'madinah') {
+          clothes = 'Black abaya and black hijab covering hair completely';
+        }
+        
+        text += `\nSubject ${i + 1}:\n`;
+        text += `- Gender: ${p.gender}\n`;
+        if (p.gender === 'Female') {
+          const hijabStatus = p.hijab === 'hijab' ? 'Wearing hijab covering hair completely' : 'Hair visible, no hijab';
+          text += `- Hijab Status: ${hijabStatus}\n`;
+        }
+        text += `- Approximate Age: ${p.age} years old\n`;
+        text += `- Clothing: ${clothes}\n`;
+      });
+      text += `\nCOMPOSITION INSTRUCTIONS:\n`;
+      text += `- ALL SUBJECTS MUST LOOK DIRECTLY AT THE CAMERA\n`;
+      if (currentLocation === 'romantic') {
+        text += `- Subjects must be embracing and hugging each other\n`;
+        text += `- Both looking directly at the camera with warm expressions\n`;
+      }
+      if (currentLocation === 'kiss') {
+        text += `- Man is gently kissing woman on the head\n`;
+        text += `- Woman is looking at the camera with a warm, happy smile\n`;
+      }
+      text += `- All subjects positioned naturally within the scene\n`;
+      text += `- Professional photography quality\n`;
+      text += `- Natural daylight or appropriate ambient lighting\n`;
+      text += `- Camera angle: Eye-level, realistic perspective\n`;
+      text += `- Expression: Natural and authentic, looking directly at camera\n`;
+      text += `- No visible editing artifacts or borders\n`;
+      text += `- Create one seamless, cohesive image`;
+      navigator.clipboard.writeText(text).then(() => toast('📋 تم نسخ التعليمات بنجاح'));
     }
   </script>
 </body>
 </html>
-
-
