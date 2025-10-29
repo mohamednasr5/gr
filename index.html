@@ -28,6 +28,23 @@
       min-height: 100vh;
       color: var(--muted);
       padding: 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    #networkCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+    
+    .container {
+      position: relative;
+      z-index: 10;
     }
     h1, h2, h3 {
       color: var(--gold);
@@ -131,6 +148,52 @@
       border-color: var(--gold);
       box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
     }
+
+    .camera-selector {
+      text-align: center;
+      background: rgba(0, 0, 0, 0.55);
+      border: 2px solid var(--gold);
+      border-radius: 15px;
+      padding: 25px;
+      margin: 25px 0;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.45);
+      display: none;
+    }
+    .camera-selector.active {
+      display: block;
+    }
+    .camera-selector h2 {
+      margin-bottom: 20px;
+    }
+    .camera-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .camera-btn {
+      padding: 15px;
+      background: rgba(20, 60, 40, 0.6);
+      border: 2px solid rgba(212, 175, 55, 0.35);
+      border-radius: 12px;
+      color: var(--muted);
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 14px;
+    }
+    .camera-btn:hover {
+      background: rgba(43, 122, 80, 0.6);
+      border-color: var(--gold);
+      transform: translateY(-3px);
+    }
+    .camera-btn.active {
+      background: linear-gradient(135deg, #d4af37, #c9a961);
+      color: #0a1a12;
+      border-color: var(--gold);
+      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+    }
+
     .upload {
       text-align: center;
       background: rgba(0, 0, 0, 0.55);
@@ -323,6 +386,21 @@
       .location-selector h2 {
         font-size: 18px;
       }
+      .camera-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 8px;
+      }
+      .camera-btn {
+        padding: 10px;
+        font-size: 12px;
+      }
+      .camera-selector {
+        padding: 15px;
+        margin: 15px 0;
+      }
+      .camera-selector h2 {
+        font-size: 18px;
+      }
       .upload {
         padding: 20px;
       }
@@ -366,6 +444,21 @@
         margin: 12px 0;
       }
       .location-selector h2 {
+        font-size: 16px;
+      }
+      .camera-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .camera-btn {
+        padding: 8px;
+        font-size: 12px;
+      }
+      .camera-selector {
+        padding: 12px;
+        margin: 12px 0;
+      }
+      .camera-selector h2 {
         font-size: 16px;
       }
       .upload {
@@ -421,6 +514,7 @@
   </style>
 </head>
 <body>
+  <canvas id="networkCanvas"></canvas>
   <div class="container">
     <div class="header">
       <h1>✦ من برمجة المهندس محمد حمّاد ✦</h1>
@@ -456,6 +550,15 @@
       </div>
     </div>
 
+    <div class="camera-selector" id="cameraSelector">
+      <h2>📹 اختر وضعية الكاميرا</h2>
+      <div class="camera-grid">
+        <button class="camera-btn" onclick="selectCamera('closeup')">🔍 وجوه بوضوح<br><small>Close-up Faces</small></button>
+        <button class="camera-btn" onclick="selectCamera('halfbody')">👤 نصف جسد<br><small>Half Body</small></button>
+        <button class="camera-btn" onclick="selectCamera('fullbody')">🧍 جسد كامل<br><small>Full Body</small></button>
+      </div>
+    </div>
+
     <div class="upload" id="uploadSection">
       <h2>📸 اختر صورك لإعداد البرومبت</h2>
       <input id="photoInput" type="file" accept="image/*" multiple>
@@ -483,6 +586,144 @@
   <div id="toast" class="toast"></div>
 
   <script>
+    // Interactive Network Background Animation
+    const canvas = document.getElementById('networkCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 2;
+        this.vy = (Math.random() - 0.5) * 2;
+        this.size = Math.random() * 2 + 1;
+        this.color = ['#d4af37', '#2b7a50', '#c9e4d6', '#1d5a3a'][Math.floor(Math.random() * 4)];
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        if (this.x < 0) this.x = canvas.width;
+        if (this.x > canvas.width) this.x = 0;
+        if (this.y < 0) this.y = canvas.height;
+        if (this.y > canvas.height) this.y = 0;
+      }
+
+      draw() {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Glow effect
+        ctx.shadowColor = this.color;
+        ctx.shadowBlur = 10;
+        ctx.fillStyle = this.color;
+        ctx.globalAlpha = 0.6;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size * 1.5, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+    }
+
+    const particles = [];
+    const particleCount = 50;
+    
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle());
+    }
+
+    let mouseX = canvas.width / 2;
+    let mouseY = canvas.height / 2;
+    let touchX = null;
+    let touchY = null;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    document.addEventListener('touchmove', (e) => {
+      touchX = e.touches[0].clientX;
+      touchY = e.touches[0].clientY;
+    });
+
+    document.addEventListener('touchend', () => {
+      touchX = null;
+      touchY = null;
+    });
+
+    function drawNetwork() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.shadowColor = 'transparent';
+
+      // Draw particles
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+
+      // Draw connections
+      const interactionX = touchX || mouseX;
+      const interactionY = touchY || mouseY;
+
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < 150) {
+            ctx.strokeStyle = particles[i].color;
+            ctx.globalAlpha = 0.3 * (1 - distance / 150);
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+            ctx.globalAlpha = 1;
+          }
+        }
+
+        // Connection to mouse/touch
+        const mdx = particles[i].x - interactionX;
+        const mdy = particles[i].y - interactionY;
+        const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+
+        if (mdist < 200) {
+          ctx.strokeStyle = '#d4af37';
+          ctx.globalAlpha = 0.6 * (1 - mdist / 200);
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(interactionX, interactionY);
+          ctx.stroke();
+
+          // Repel particles from cursor
+          particles[i].vx += (particles[i].x - interactionX) * 0.005;
+          particles[i].vy += (particles[i].y - interactionY) * 0.005;
+        }
+
+        ctx.globalAlpha = 1;
+      }
+    }
+
+    function animate() {
+      drawNetwork();
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    animate();
+
     const locationSettings = {
       kaaba: { nameAr: 'الكعبة المشرفة', maleClothes: 'White ihram (white wrapper and white upper garment)', femaleClothes: 'White abaya and white hijab', background: 'Holy Kaaba in Mecca', description: 'Standing in front of the Holy Kaaba', emotion: 'spiritual reverence' },
       madinah: { nameAr: 'المسجد النبوي الشريف', maleClothes: 'White ihram (white wrapper and white upper garment)', femaleClothes: 'White abaya and white hijab', background: 'Prophet Muhammad Mosque in Medina', description: 'Standing in front of the Prophet Muhammad Mosque', emotion: 'spiritual reverence' },
@@ -501,7 +742,14 @@
       kiss: { nameAr: 'تقبيل', maleClothes: 'Casual comfortable clothing', femaleClothes: 'Vibrant festive dress or colorful elegant outfit', background: 'Beautiful romantic setting with soft lighting', description: 'Man gently kissing woman on the head, woman looking at camera with warm smile', emotion: 'tender and loving', pose: 'man kissing woman head' }
     };
 
+    const cameraSettings = {
+      closeup: { nameAr: 'وجوه بوضوح تام', desc: 'Close-up shot focusing on faces only, zoom in, crystal clear facial features', instruction: 'Camera angle: Extreme close-up zoom, focus on faces, crisp facial details' },
+      halfbody: { nameAr: 'نصف جسد', desc: 'Half body shot from head to waist, faces clearly visible with upper body context', instruction: 'Camera angle: Mid shot from head to torso, faces sharp and clear with upper body visible' },
+      fullbody: { nameAr: 'جسد كامل', desc: 'Full body shot from head to feet, faces clearly visible with complete body in frame', instruction: 'Camera angle: Wide shot from head to feet, faces sharp and clear with full body visible' }
+    };
+
     let currentLocation = '';
+    let currentCamera = '';
     let uploaded = [];
     
     const toast = (t) => {
@@ -516,14 +764,25 @@
 
     function selectLocation(loc) {
       currentLocation = loc;
+      currentCamera = '';
       const buttons = document.querySelectorAll('.location-btn');
       buttons.forEach(b => b.classList.remove('active'));
       event.target.closest('.location-btn').classList.add('active');
-      document.getElementById('uploadSection').classList.add('active');
+      document.getElementById('cameraSelector').classList.add('active');
+      document.getElementById('uploadSection').classList.remove('active');
       document.getElementById('previewGrid').classList.remove('active');
       document.getElementById('mergeSection').classList.remove('active');
       uploaded = [];
       toast(`تم اختيار: ${locationSettings[loc].nameAr}`);
+    }
+
+    function selectCamera(cam) {
+      currentCamera = cam;
+      const buttons = document.querySelectorAll('.camera-btn');
+      buttons.forEach(b => b.classList.remove('active'));
+      event.target.closest('.camera-btn').classList.add('active');
+      document.getElementById('uploadSection').classList.add('active');
+      toast(`تم اختيار: ${cameraSettings[cam].nameAr}`);
     }
 
     function playQuran() {
@@ -543,6 +802,10 @@
     photoInput.addEventListener('change', e => {
       if (!currentLocation) {
         toast('⚠️ اختر السيناريو أولاً');
+        return;
+      }
+      if (!currentCamera) {
+        toast('⚠️ اختر وضعية الكاميرا أولاً');
         return;
       }
       uploaded = [];
@@ -608,7 +871,7 @@
         previewGrid.classList.add('active');
         mergeSection.classList.add('active');
         const info = locationSettings[currentLocation];
-        document.getElementById('locationInfo').textContent = `📍 ${info.nameAr}`;
+        document.getElementById('locationInfo').textContent = `📍 ${info.nameAr} | 📹 ${cameraSettings[currentCamera].nameAr}`;
         mergeImages();
       }
     }
@@ -700,9 +963,20 @@
     
     function copyPrompt() {
       const info = locationSettings[currentLocation];
+      const camInfo = cameraSettings[currentCamera];
       let text = `CRITICAL INSTRUCTIONS (by Eng. Mohamed Hammad):\n\n`;
       text += `Use only the faces from uploaded images — ignore backgrounds and borders.\n`;
       text += `Maintain 100.999% facial identity accuracy.\n\n`;
+      text += `OUTPUT REQUIREMENTS:\n`;
+      text += `- Resolution: 8K (7680×4320 pixels) or maximum quality available\n`;
+      text += `- Style: 100% natural, realistic mobile phone photography\n`;
+      text += `- No visible editing artifacts, filters, or watermarks\n`;
+      text += `- Natural lighting: Real daylight or authentic ambient lighting\n`;
+      text += `- Appearance: Looks exactly like unedited professional mobile photography\n\n`;
+      text += `CAMERA SETTINGS:\n`;
+      text += `${camInfo.instruction}\n`;
+      text += `- Faces must be sharp and clearly visible\n`;
+      text += `- Natural perspective and proportions\n\n`;
       text += `SCENARIO: ${info.description}\n`;
       text += `LOCATION: ${info.background}\n`;
       text += `EMOTION: ${info.emotion}\n\n`;
@@ -735,11 +1009,13 @@
       }
       text += `- All subjects positioned naturally within the scene\n`;
       text += `- Professional photography quality\n`;
-      text += `- Natural daylight or appropriate ambient lighting\n`;
-      text += `- Camera angle: Eye-level, realistic perspective\n`;
-      text += `- Expression: Natural and authentic, looking directly at camera\n`;
-      text += `- No visible editing artifacts or borders\n`;
-      text += `- Create one seamless, cohesive image`;
+      text += `- Create one seamless, cohesive image\n\n`;
+      text += `AI GENERATION NOTES:\n`;
+      text += `- This is an AI-generated creative composition\n`;
+      text += `- Based on reference photos provided\n`;
+      text += `- For creative and entertainment purposes\n`;
+      text += `- High-quality AI artwork with natural aesthetics\n`;
+      text += `- Professional digital generation output`;
       navigator.clipboard.writeText(text).then(() => toast('📋 تم نسخ التعليمات بنجاح'));
     }
   </script>
