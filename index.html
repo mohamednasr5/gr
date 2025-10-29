@@ -609,7 +609,7 @@
 
     <div class="footer">
       🕌 تم التصميم والبرمجة بعناية | بإهداء إلى روح المرحومة <strong>جيهان نصر</strong><br>
-      © Eng. Mohamed Hammad | <span class="pulse-icon">👍</span><a href="https://www.facebook.com/en.mohamed.nasr" target="_blank" class="fb-link">تابعوا المهندس محمد حماد على الفيسبوك</a>
+      © Eng. Mohamed Hammad | <span class="pulse-icon">👍</span><a href="https://www.facebook.com/en.mohamed.nasr" target="_blank" class="fb-link"> المهندس محمد حماد على الفيسبوك</a>
     </div>
   </div>
 
@@ -991,63 +991,76 @@
       toast('✅ تم تحميل الصورة');
     }
     
-    function copyPrompt() {
-      const info = locationSettings[currentLocation];
-      const camInfo = cameraSettings[currentCamera];
-      let text = `CRITICAL INSTRUCTIONS (by Eng. Mohamed Hammad):\n\n`;
-      text += `Use only the faces from uploaded images — ignore backgrounds and borders.\n`;
-      text += `Maintain 100.999% facial identity accuracy.\n\n`;
-      text += `OUTPUT REQUIREMENTS:\n`;
-      text += `- Resolution: 8K (7680×4320 pixels) or maximum quality available\n`;
-      text += `- Style: 100% natural, realistic mobile phone photography\n`;
-      text += `- No visible editing artifacts, filters, or watermarks\n`;
-      text += `- Natural lighting: Real daylight or authentic ambient lighting\n`;
-      text += `- Appearance: Looks exactly like unedited professional mobile photography\n\n`;
-      text += `CAMERA SETTINGS:\n`;
-      text += `${camInfo.instruction}\n`;
-      text += `- Faces must be sharp and clearly visible\n`;
-      text += `- Natural perspective and proportions\n\n`;
-      text += `SCENARIO: ${info.description}\n`;
-      text += `LOCATION: ${info.background}\n`;
-      text += `EMOTION: ${info.emotion}\n\n`;
-      text += `SUBJECT DETAILS:\n`;
-      uploaded.forEach((p, i) => {
-        let clothes = p.gender === 'Male' ? info.maleClothes : info.femaleClothes;
-        
-        if (p.gender === 'Female' && p.age > 50 && p.hijab === 'hijab' && currentLocation !== 'kaaba' && currentLocation !== 'madinah') {
-          clothes = 'Black abaya and black hijab covering hair completely';
-        }
-        
-        text += `\nSubject ${i + 1}:\n`;
-        text += `- Gender: ${p.gender}\n`;
-        if (p.gender === 'Female') {
-          const hijabStatus = p.hijab === 'hijab' ? 'Wearing hijab covering hair completely' : 'Hair visible, no hijab';
-          text += `- Hijab Status: ${hijabStatus}\n`;
-        }
-        text += `- Approximate Age: ${p.age} years old\n`;
-        text += `- Clothing: ${clothes}\n`;
-      });
-      text += `\nCOMPOSITION INSTRUCTIONS:\n`;
-      text += `- ALL SUBJECTS MUST LOOK DIRECTLY AT THE CAMERA\n`;
-      if (currentLocation === 'romantic') {
-        text += `- Subjects must be embracing and hugging each other\n`;
-        text += `- Both looking directly at the camera with warm expressions\n`;
-      }
-      if (currentLocation === 'kiss') {
-        text += `- Man is gently kissing woman on the head\n`;
-        text += `- Woman is looking at the camera with a warm, happy smile\n`;
-      }
-      text += `- All subjects positioned naturally within the scene\n`;
-      text += `- Professional photography quality\n`;
-      text += `- Create one seamless, cohesive image\n\n`;
-      text += `AI GENERATION NOTES:\n`;
-      text += `- This is an AI-generated creative composition\n`;
-      text += `- Based on reference photos provided\n`;
-      text += `- For creative and entertainment purposes\n`;
-      text += `- High-quality AI artwork with natural aesthetics\n`;
-      text += `- Professional digital generation output`;
-      navigator.clipboard.writeText(text).then(() => toast('📋 تم نسخ التعليمات بنجاح'));
+  function copyPrompt() {
+  const info = locationSettings[currentLocation];
+  const camInfo = cameraSettings[currentCamera];
+  let text = `CRITICAL INSTRUCTIONS (by Eng. Mohamed Hammad):\n\n`;
+  text += `Use only the faces from uploaded images — ignore backgrounds and borders.\n`;
+  text += `Maintain 100.999% facial identity accuracy.\n`;
+  text += `Do not modify any facial proportions, skin tone, or facial details.\n`;
+  text += `If the male subject in the uploaded image has no beard or mustache, IGNORE any beard or mustache completely.\n\n`;
+  text += `OUTPUT REQUIREMENTS:\n`;
+  text += `- Resolution: 8K (7680×4320 pixels) or maximum quality available\n`;
+  text += `- Style: 100% natural, realistic mobile phone photography\n`;
+  text += `- No visible editing artifacts, filters, or watermarks\n`;
+  text += `- Natural lighting: Real daylight or authentic ambient lighting\n`;
+  text += `- Appearance: Looks exactly like unedited professional mobile photography\n\n`;
+  text += `CAMERA SETTINGS:\n`;
+  text += `${camInfo.instruction}\n`;
+  text += `- Faces must be sharp, clear, and looking directly at the camera\n`;
+  text += `- Natural perspective and proportions\n\n`;
+  text += `SCENARIO: ${info.description}\n`;
+  text += `LOCATION: ${info.background}\n`;
+  text += `EMOTION: ${info.emotion}\n\n`;
+  text += `SUBJECT DETAILS:\n`;
+
+  uploaded.forEach((p, i) => {
+    let clothes = p.gender === 'Male' ? info.maleClothes : info.femaleClothes;
+
+    if (p.gender === 'Female' && p.age > 50 && p.hijab === 'hijab' && currentLocation !== 'kaaba' && currentLocation !== 'madinah') {
+      clothes = 'Black abaya and black hijab covering hair completely';
     }
+
+    text += `\nSubject ${i + 1}:\n`;
+    text += `- Gender: ${p.gender}\n`;
+
+    if (p.gender === 'Female') {
+      const hijabStatus = p.hijab === 'hijab'
+        ? 'Wearing hijab covering hair completely (no hair visible at all)'
+        : 'Hair visible, no hijab, natural hairstyle visible';
+      text += `- Hijab Status: ${hijabStatus}\n`;
+    }
+
+    text += `- Approximate Age: ${p.age} years old\n`;
+    text += `- Clothing: ${clothes}\n`;
+  });
+
+  text += `\nCOMPOSITION INSTRUCTIONS:\n`;
+  text += `- ALL SUBJECTS MUST LOOK DIRECTLY AT THE CAMERA\n`;
+  text += `- Maintain soft, natural eye contact and realistic expressions\n`;
+  if (currentLocation === 'romantic') {
+    text += `- Subjects must be embracing and hugging each other naturally\n`;
+    text += `- Both looking directly at the camera with warm expressions\n`;
+  }
+  if (currentLocation === 'kiss') {
+    text += `- Man is gently kissing woman on the head\n`;
+    text += `- Woman is looking at the camera with a warm, happy smile\n`;
+  }
+  text += `- All subjects positioned naturally within the scene\n`;
+  text += `- Professional photography quality\n`;
+  text += `- Create one seamless, cohesive image\n\n`;
+  text += `AI GENERATION NOTES:\n`;
+  text += `- This is an AI-generated creative composition\n`;
+  text += `- Based on reference photos provided\n`;
+  text += `- For creative and entertainment purposes\n`;
+  text += `- High-quality AI artwork with natural aesthetics\n`;
+  text += `- Professional digital generation output`;
+
+  navigator.clipboard.writeText(text)
+    .then(() => toast('📋 تم نسخ البرومبت بنجاح!', 'success'))
+    .catch(() => toast('❌ فشل النسخ', 'error'));
+}
+
   </script>
 </body>
 </html>
