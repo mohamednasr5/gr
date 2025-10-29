@@ -560,25 +560,31 @@
     </div>
 
     <div class="location-selector">
-      <h2>📍 اختر السيناريو الذي تريده</h2>
-      <div class="location-grid">
-        <button class="location-btn" onclick="selectLocation('kaaba')">🕋 الكعبة</button>
-        <button class="location-btn" onclick="selectLocation('madinah')">🕌 المسجد النبوي</button>
-        <button class="location-btn" onclick="selectLocation('dome')">⛪ قبة الصخرة</button>
-        <button class="location-btn" onclick="selectLocation('pyramids')">🔺 الأهرامات</button>
-        <button class="location-btn" onclick="selectLocation('souq')">🏪 سوق شعبي</button>
-        <button class="location-btn" onclick="selectLocation('coffee')">☕ قهوة شعبية</button>
-        <button class="location-btn" onclick="selectLocation('metro')">🚇 مترو الأنفاق</button>
-        <button class="location-btn" onclick="selectLocation('airport')">✈️ مطار</button>
-        <button class="location-btn" onclick="selectLocation('cafe')">🍰 كافيه راقي</button>
-        <button class="location-btn" onclick="selectLocation('beach')">🏖️ الشاطيء</button>
-        <button class="location-btn" onclick="selectLocation('bus')">🚌 الباص</button>
-        <button class="location-btn" onclick="selectLocation('dinner')">🍽️ سفرة الغذاء</button>
-        <button class="location-btn" onclick="selectLocation('tv')">📺 يشاهدون التلفاز</button>
-        <button class="location-btn" onclick="selectLocation('romantic')">💕 رومانسي</button>
-        <button class="location-btn" onclick="selectLocation('kiss')">💋 تقبيل</button>
-      </div>
-    </div>
+  <h2>📍 اختر السيناريو الذي تريده</h2>
+  <div class="location-grid">
+    <button class="location-btn" onclick="selectLocation('kaaba')">🕋 الكعبة</button>
+    <button class="location-btn" onclick="selectLocation('madinah')">🕌 المسجد النبوي</button>
+    <button class="location-btn" onclick="selectLocation('dome')">⛪ قبة الصخرة</button>
+    <button class="location-btn" onclick="selectLocation('pyramids')">🔺 الأهرامات</button>
+    <button class="location-btn" onclick="selectLocation('souq')">🏪 سوق شعبي</button>
+    <button class="location-btn" onclick="selectLocation('coffee')">☕ قهوة شعبية</button>
+    <button class="location-btn" onclick="selectLocation('metro')">🚇 مترو الأنفاق</button>
+    <button class="location-btn" onclick="selectLocation('airport')">✈️ مطار</button>
+    <button class="location-btn" onclick="selectLocation('cafe')">🍰 كافيه راقي</button>
+    <button class="location-btn" onclick="selectLocation('beach')">🏖️ الشاطيء</button>
+    <button class="location-btn" onclick="selectLocation('bus')">🚌 الباص</button>
+    <button class="location-btn" onclick="selectLocation('dinner')">🍽️ سفرة الغذاء</button>
+    <button class="location-btn" onclick="selectLocation('tv')">📺 يشاهدون التلفاز</button>
+    <button class="location-btn" onclick="selectLocation('romantic')">💕 رومانسي</button>
+    <button class="location-btn" onclick="selectLocation('kiss')">💋 تقبيل</button>
+    <!-- الأماكن الجديدة -->
+    <button class="location-btn" onclick="selectLocation('university')">🎓 الجامعة</button>
+    <button class="location-btn" onclick="selectLocation('library')">📚 المكتبة</button>
+    <button class="location-btn" onclick="selectLocation('supermarket')">🛒 السوبر ماركت</button>
+    <button class="location-btn" onclick="selectLocation('amusement')">🎡 الملاهي</button>
+    <button class="location-btn" onclick="selectLocation('hospital')">🏥 المستشفى</button>
+  </div>
+</div>
 
     <div class="camera-selector" id="cameraSelector">
       <h2>📹 اختر وضعية الكاميرا</h2>
@@ -754,23 +760,30 @@
 
     animate();
 
-    const locationSettings = {
-      kaaba: { nameAr: 'الكعبة المشرفة', maleClothes: 'White ihram (white wrapper and white upper garment)', femaleClothes: 'White abaya and white hijab', background: 'Holy Kaaba in Mecca', description: 'Standing in front of the Holy Kaaba', emotion: 'spiritual reverence' },
-      madinah: { nameAr: 'المسجد النبوي الشريف', maleClothes: 'White ihram (white wrapper and white upper garment)', femaleClothes: 'White abaya and white hijab', background: 'Prophet Muhammad Mosque in Medina', description: 'Standing in front of the Prophet Muhammad Mosque', emotion: 'spiritual reverence' },
-      dome: { nameAr: 'قبة الصخرة المشرفة', maleClothes: 'casual clothing, Palestinian keffiyeh around neck, raising victory sign', femaleClothes: 'colorful festive dress, Palestinian keffiyeh around neck, holding Palestinian flag', background: 'Dome of the Rock in Jerusalem', description: 'Standing in front of the Dome of the Rock', emotion: 'proud and defiant' },
-      pyramids: { nameAr: 'الأهرامات', maleClothes: 'Ancient Egyptian clothing (pharaonic style)', femaleClothes: 'Ancient Egyptian clothing (pharaonic style)', background: 'Great Pyramids of Giza', description: 'Standing in front of the Great Pyramids', emotion: 'majestic and historical' },
-      souq: { nameAr: 'سوق شعبي مصري', maleClothes: 'Traditional Egyptian galabaya or casual Egyptian street wear', femaleClothes: 'Traditional Egyptian dress or casual Egyptian street wear with hijab', background: 'Traditional Egyptian bazaar with colorful shops and merchandise', description: 'Standing in a busy Egyptian souk surrounded by traditional vendors', emotion: 'lively and authentic' },
-      coffee: { nameAr: 'قهوة شعبية', maleClothes: 'Traditional Egyptian casual wear, sitting relaxed', femaleClothes: 'Traditional Egyptian casual wear or galabaya style with hijab, sitting relaxed', background: 'Traditional Egyptian coffee shop with aged walls and traditional decor', description: 'Sitting together in a traditional Egyptian coffee shop', emotion: 'casual and comfortable' },
-      metro: { nameAr: 'مترو الأنفاق المصري', maleClothes: 'Modern casual urban Egyptian clothing, standing in metro', femaleClothes: 'Modern casual urban Egyptian clothing with hijab, standing in metro', background: 'Inside Cairo Metro station with underground tunnels and metro car interior', description: 'Standing inside an Egyptian metro train', emotion: 'urban and contemporary' },
-      airport: { nameAr: 'مطار القاهرة', maleClothes: 'Smart casual travel outfit, modern and fashionable', femaleClothes: 'Smart casual travel outfit with hijab, modern and fashionable', background: 'Cairo Airport terminal with modern architecture and departure boards', description: 'Standing at Cairo Airport terminal with travel luggage', emotion: 'adventurous and excited' },
-      cafe: { nameAr: 'كافيه راقي', maleClothes: 'Elegant casual wear, stylish and refined', femaleClothes: 'Elegant modern dress with hijab, stylish and refined', background: 'Upscale modern cafe with sophisticated interior design', description: 'Sitting at a trendy upscale cafe enjoying beverages', emotion: 'sophisticated and relaxed' },
-      beach: { nameAr: 'الشاطيء', maleClothes: 'Beach casual wear, summer shirt and shorts', femaleClothes: 'Beach appropriate wear with Islamic modesty, beach hijab', background: 'Beautiful sandy beach with Mediterranean or Red Sea views and sunset', description: 'Standing together on a beautiful sandy beach', emotion: 'peaceful and joyful' },
-      bus: { nameAr: 'الباص بجوار بعضهما', maleClothes: 'Casual everyday Egyptian wear, sitting close together', femaleClothes: 'Casual everyday Egyptian wear with hijab, sitting close together', background: 'Inside a crowded Cairo bus with passengers and seats', description: 'Sitting next to each other on a crowded Egyptian bus', emotion: 'intimate and natural' },
-      dinner: { nameAr: 'سفرة الغذاء', maleClothes: 'Semi-formal or casual home wear, sitting at table', femaleClothes: 'Semi-formal or casual home wear with hijab, sitting at table', background: 'Traditional Egyptian dining setup with various Egyptian dishes on the table', description: 'Sitting together at a traditional Egyptian dining table', emotion: 'warm and family-oriented' },
-      tv: { nameAr: 'يشاهدون التلفاز', maleClothes: 'Comfortable home casual wear, sitting relaxed', femaleClothes: 'Comfortable home casual wear with hijab, sitting relaxed', background: 'Modern Egyptian home interior with television and comfortable seating', description: 'Sitting together comfortably watching television at home', emotion: 'cozy and intimate' },
-      romantic: { nameAr: 'رومانسي', maleClothes: 'Casual comfortable clothing', femaleClothes: 'Vibrant festive dress or colorful elegant outfit', background: 'Beautiful romantic setting with soft lighting', description: 'Standing together embracing each other, both looking directly at the camera', emotion: 'romantic and intimate', pose: 'embracing and hugging each other' },
-      kiss: { nameAr: 'تقبيل', maleClothes: 'Casual comfortable clothing', femaleClothes: 'Vibrant festive dress or colorful elegant outfit', background: 'Beautiful romantic setting with soft lighting', description: 'Man gently kissing woman on the head, woman looking at camera with warm smile', emotion: 'tender and loving', pose: 'man kissing woman head' }
-    };
+const locationSettings = {
+  kaaba: { nameAr: 'الكعبة المشرفة', maleClothes: 'White ihram (white wrapper and white upper garment)', femaleClothes: 'White abaya and white hijab', background: 'Holy Kaaba in Mecca', description: 'Standing in front of the Holy Kaaba', emotion: 'spiritual reverence' },
+  madinah: { nameAr: 'المسجد النبوي الشريف', maleClothes: 'White ihram (white wrapper and white upper garment)', femaleClothes: 'White abaya and white hijab', background: 'Prophet Muhammad Mosque in Medina', description: 'Standing in front of the Prophet Muhammad Mosque', emotion: 'spiritual reverence' },
+  dome: { nameAr: 'قبة الصخرة المشرفة', maleClothes: 'casual clothing, Palestinian keffiyeh around neck, raising victory sign', femaleClothes: 'colorful festive dress, Palestinian keffiyeh around neck, holding Palestinian flag', background: 'Dome of the Rock in Jerusalem', description: 'Standing in front of the Dome of the Rock', emotion: 'proud and defiant' },
+  pyramids: { nameAr: 'الأهرامات', maleClothes: 'Ancient Egyptian clothing (pharaonic style)', femaleClothes: 'Ancient Egyptian clothing (pharaonic style)', background: 'Great Pyramids of Giza', description: 'Standing in front of the Great Pyramids', emotion: 'majestic and historical' },
+  souq: { nameAr: 'سوق شعبي مصري', maleClothes: 'Traditional Egyptian galabaya or casual Egyptian street wear', femaleClothes: 'Traditional Egyptian dress or casual Egyptian street wear with hijab', background: 'Traditional Egyptian bazaar with colorful shops and merchandise', description: 'Standing in a busy Egyptian souk surrounded by traditional vendors', emotion: 'lively and authentic' },
+  coffee: { nameAr: 'قهوة شعبية', maleClothes: 'Traditional Egyptian casual wear, sitting relaxed', femaleClothes: 'Traditional Egyptian casual wear or galabaya style with hijab, sitting relaxed', background: 'Traditional Egyptian coffee shop with aged walls and traditional decor', description: 'Sitting together in a traditional Egyptian coffee shop', emotion: 'casual and comfortable' },
+  metro: { nameAr: 'مترو الأنفاق المصري', maleClothes: 'Modern casual urban Egyptian clothing, standing in metro', femaleClothes: 'Modern casual urban Egyptian clothing with hijab, standing in metro', background: 'Inside Cairo Metro station with underground tunnels and metro car interior', description: 'Standing inside an Egyptian metro train', emotion: 'urban and contemporary' },
+  airport: { nameAr: 'مطار القاهرة', maleClothes: 'Smart casual travel outfit, modern and fashionable', femaleClothes: 'Smart casual travel outfit with hijab, modern and fashionable', background: 'Cairo Airport terminal with modern architecture and departure boards', description: 'Standing at Cairo Airport terminal with travel luggage', emotion: 'adventurous and excited' },
+  cafe: { nameAr: 'كافيه راقي', maleClothes: 'Elegant casual wear, stylish and refined', femaleClothes: 'Elegant modern dress with hijab, stylish and refined', background: 'Upscale modern cafe with sophisticated interior design', description: 'Sitting at a trendy upscale cafe enjoying beverages', emotion: 'sophisticated and relaxed' },
+  beach: { nameAr: 'الشاطيء', maleClothes: 'Beach casual wear, summer shirt and shorts', femaleClothes: 'Beach appropriate wear with Islamic modesty, beach hijab', background: 'Beautiful sandy beach with Mediterranean or Red Sea views and sunset', description: 'Standing together on a beautiful sandy beach', emotion: 'peaceful and joyful' },
+  bus: { nameAr: 'الباص بجوار بعضهما', maleClothes: 'Casual everyday Egyptian wear, sitting close together', femaleClothes: 'Casual everyday Egyptian wear with hijab, sitting close together', background: 'Inside a crowded Cairo bus with passengers and seats', description: 'Sitting next to each other on a crowded Egyptian bus', emotion: 'intimate and natural' },
+  dinner: { nameAr: 'سفرة الغذاء', maleClothes: 'Semi-formal or casual home wear, sitting at table', femaleClothes: 'Semi-formal or casual home wear with hijab, sitting at table', background: 'Traditional Egyptian dining setup with various Egyptian dishes on the table', description: 'Sitting together at a traditional Egyptian dining table', emotion: 'warm and family-oriented' },
+  tv: { nameAr: 'يشاهدون التلفاز', maleClothes: 'Comfortable home casual wear, sitting relaxed', femaleClothes: 'Comfortable home casual wear with hijab, sitting relaxed', background: 'Modern Egyptian home interior with television and comfortable seating', description: 'Sitting together comfortably watching television at home', emotion: 'cozy and intimate' },
+  romantic: { nameAr: 'رومانسي', maleClothes: 'Casual comfortable clothing', femaleClothes: 'Vibrant festive dress or colorful elegant outfit', background: 'Beautiful romantic setting with soft lighting', description: 'Standing together embracing each other, both looking directly at the camera', emotion: 'romantic and intimate', pose: 'embracing and hugging each other' },
+  kiss: { nameAr: 'تقبيل', maleClothes: 'Casual comfortable clothing', femaleClothes: 'Vibrant festive dress or colorful elegant outfit', background: 'Beautiful romantic setting with soft lighting', description: 'Man gently kissing woman on the head, woman looking at camera with warm smile', emotion: 'tender and loving', pose: 'man kissing woman head' },
+  
+  // الأماكن الجديدة 🎓📚🛒🎡🏥
+  university: { nameAr: 'الجامعة', maleClothes: 'Casual modern outfit with backpack (jeans and shirt)', femaleClothes: 'Smart casual outfit with hijab and handbag', background: 'University campus with buildings, trees, and students walking', description: 'Standing together in front of a modern university campus', emotion: 'ambitious and intellectual' },
+  library: { nameAr: 'المكتبة', maleClothes: 'Casual neat clothing, reading a book', femaleClothes: 'Modest casual outfit with hijab, reading or holding a book', background: 'Quiet library interior with bookshelves and reading desks', description: 'Standing or sitting together inside a large library', emotion: 'focused and calm' },
+  supermarket: { nameAr: 'السوبر ماركت', maleClothes: 'Casual everyday clothing, holding shopping basket', femaleClothes: 'Casual outfit with hijab, holding shopping bag or choosing groceries', background: 'Modern supermarket with shelves of products and bright lighting', description: 'Shopping together inside a supermarket', emotion: 'normal daily life and cheerful' },
+  amusement: { nameAr: 'الملاهي', maleClothes: 'Casual fun outfit, jeans and colorful t-shirt', femaleClothes: 'Colorful modest casual outfit with hijab, cheerful expression', background: 'Amusement park with rides, ferris wheel, and lights', description: 'Standing together in a lively amusement park at night', emotion: 'happy and playful' },
+  hospital: { nameAr: 'المستشفى', maleClothes: 'Doctor uniform or patient outfit depending on role', femaleClothes: 'Doctor uniform with hijab or nurse outfit', background: 'Modern hospital interior with medical equipment and white walls', description: 'Standing inside a hospital hallway or patient room', emotion: 'caring and professional' }
+};
 
     const cameraSettings = {
       closeup: { nameAr: 'وجوه بوضوح تام', desc: 'Close-up shot focusing on faces only, zoom in, crystal clear facial features', instruction: 'Camera angle: Extreme close-up zoom, focus on faces, crisp facial details' },
@@ -1064,3 +1077,4 @@
   </script>
 </body>
 </html>
+
