@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🕋 BananaPrompt AI v2.3 — Islamic Photo Composer</title>
+  <title>🕋 BananaPrompt AI v2.4 — Islamic Photo Composer</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -106,12 +106,6 @@
       border-radius:12px;border:2px solid rgba(212,175,55,0.3);
     }
     .merge-actions{margin-top:15px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
-    pre{
-      background:rgba(20,60,40,0.6);
-      border:2px solid rgba(212,175,55,0.3);
-      color:var(--gold);padding:15px;border-radius:12px;
-      font-size:13px;font-family:monospace;white-space:pre-wrap;word-wrap:break-word;
-    }
     .footer{
       margin-top:50px;text-align:center;color:var(--gold);
       background:linear-gradient(135deg,rgba(0,0,0,0.8),rgba(0,0,0,0.7)),
@@ -137,11 +131,11 @@
       <p>صدقة جارية على أخته المرحومة <strong>جيهان نصر</strong></p>
       <p class="ded">نسألكم الدعاء لها بالرحمة والمغفرة ودخول الفردوس الأعلى ❤️</p>
       <div class="audio">
-        <audio id="quranAudio">
-          <source src="https://cdn.quranco.com/recitations/ar-ar/AR_ALAFASY/055_ar_alafasy_64kb.mp3" type="audio/mpeg">
+        <audio id="quranAudio" autoplay volume="0.3">
+          <source src="https://raw.githubusercontent.com/mohamednasr5/gr/main/download.wav" type="audio/wav">
         </audio>
-        <button class="btn-primary" onclick="playQuran()">▶️ تشغيل سورة الرحمن</button>
-        <button class="btn-secondary" onclick="pauseQuran()">⏸️ إيقاف</button>
+        <button class="btn-primary" onclick="playQuran()">▶️ تشغيل الدعاء</button>
+        <button class="btn-secondary" onclick="pauseQuran()">⏸️ إيقاف الدعاء</button>
       </div>
     </div>
 
@@ -164,7 +158,7 @@
 
     <div class="footer">
       🕌 تم التصميم والبرمجة بعناية | بإهداء إلى روح المرحومة <strong>جيهان نصر</strong><br>
-      © Eng. Mohamed Hammad | BananaPrompt AI v2.3
+      © Eng. Mohamed Hammad | BananaPrompt AI v2.4
     </div>
   </div>
 
@@ -173,8 +167,9 @@
   <script>
     const toast=(t)=>{const n=document.getElementById('toast');n.textContent=t;n.classList.add('show');setTimeout(()=>n.classList.remove('show'),2000)};
     const audio=document.getElementById('quranAudio');
-    function playQuran(){audio.play().catch(()=>toast('تحتاج لتفاعل يدوي'));}
-    function pauseQuran(){audio.pause();toast('تم الإيقاف ⏸️');}
+    audio.volume=0.3;
+    function playQuran(){audio.play().catch(()=>toast('🎧 تحتاج لتفاعل يدوي لتشغيل الصوت'));}
+    function pauseQuran(){audio.pause();toast('⏸️ تم إيقاف الدعاء');}
 
     const photoInput=document.getElementById('photoInput');
     const previewGrid=document.getElementById('previewGrid');
@@ -260,6 +255,7 @@
         ctx.fillStyle='#fff';ctx.font='bold 18px Cairo';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(i+1,bx,by);
       });
     }
+
     function roundRect(ctx,x,y,w,h,r){const rr=Math.min(r,w/2,h/2);ctx.beginPath();ctx.moveTo(x+rr,y);ctx.arcTo(x+w,y,x+w,y+h,rr);ctx.arcTo(x+w,y+h,x,y+h,rr);ctx.arcTo(x,y+h,x,y,rr);ctx.arcTo(x,y,x+w,y,rr);ctx.closePath();}
     function updateMerged(){if(uploaded.length>0)mergeImages();}
     function downloadMerged(){const a=document.createElement('a');a.href=mergedCanvas.toDataURL('image/png');a.download='merged.png';a.click();toast('✅ تم تحميل الصورة المدمجة');}
